@@ -1,0 +1,2 @@
+class MetricMeasure < ApplicationRecord
+end
