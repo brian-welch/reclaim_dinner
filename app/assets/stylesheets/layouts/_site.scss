@@ -1,0 +1,48 @@
+
+h1 {
+  transition: ease 300ms all;
+  font-size: $font-size-base + 35;
+}
+h2 {
+  transition: ease 300ms all;
+  font-size: $font-size-base + 27;
+}
+h3 {
+  transition: ease 300ms all;
+  font-size: $font-size-base + 19;
+}
+h4 {
+  transition: ease 300ms all;
+  font-size: $font-size-base + 11;
+}
+h5 {
+  transition: ease 300ms all;
+  font-size: $font-size-base + 3;
+}
+h6 {
+  transition: ease 300ms all;
+  font-size: $font-size-base;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, td, span, input {
+  transition: ease 300ms all;
+}
+
+a {
+  transition: ease 300ms all;
+  font-weight: bold;
+}
+a:hover {
+  text-decoration: none;
+
+}
+
+p {
+  transition: ease 300ms all;
+  line-height: 1.7em;
+  letter-spacing: -0.02em;
+}
+
+
+
+

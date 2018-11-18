@@ -1,0 +1,2 @@
+class UserRecipiesController < ApplicationController
+end
