@@ -5,7 +5,7 @@
     First and foremost: we are looking to develop a profesisonal quality webapp which will be used for a prefessional portfolio.
   </li>
   <li>
-    All suggestions and bug will be documented inside the project <a href="https://github.com/brian-welch/reclaim_dinner/issues" target="new">ISSUES</a>. Even bugs on your own responsibility should be documented there if it is not something you are immediately going to deal with.
+    All suggestions and bug will be documented inside the project <a href="https://github.com/brian-welch/reclaim_dinner/issues" target="_blank">ISSUES</a>. Even bugs on your own responsibility should be documented there if it is not something you are immediately going to deal with.
   </li>
   <li>
     If there isn't a ticket, then there isn't an issue to fix.
