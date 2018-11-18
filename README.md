@@ -1,6 +1,32 @@
-  <style>
-    th, td {background-color:white;box-shadow: 0 0 2px rgba(0, 0, 0, 0.2)}
-  </style>
+  <h1>The Groud Rules:</h1>
+
+<ol>
+  <li>
+    First and foremost: we are looking to develop a profesisonal quality webapp which will be used for a prefessional portfolio.
+  </li>
+  <li>
+    All suggestions and bug will be documented inside the project <a href="https://github.com/brian-welch/reclaim_dinner/issues">ISSUES</a>. Even bugs on your own responsibility should be documented there if it is not something you are immediately going to deal with.
+  </li>
+  <li>
+    If there isn't a ticket, then there isn't an issue to fix.
+  </li>
+  <li>
+    The head designer has final say about all suggestions regarding UX, colors forms.</li>
+  <li>
+    The Project Leader has final say on what is to prioritize and the end goal of the webapp
+  </li>
+  <li>
+    The development schedule and plan should be addressed daily before work commences.
+  </li>
+  <li>
+    Everyone sha respect others' designated role and ability/responsibility to take decisions for their areas - and respect that decision objectively without offence.
+  </li>
+  <li>
+    Once the finished project is decided upon at the onset of the deveopment, no additional functionality, features, etc.; will be added or worked on until the agreed goal is reached. Only after the final app is developed should we add new functionality. 
+  </li>
+</ol>
+<hr>
+
 <body>
   <h1>Project Information:</h1>
   <hr>
