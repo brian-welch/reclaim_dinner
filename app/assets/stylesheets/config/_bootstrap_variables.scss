@@ -25,7 +25,7 @@ $text-color: $rd-text-color;// Bootstrap default: $gray-dark !default;
 // $brand-danger:          #d9534f !default;
 
 $brand-primary:   $rd-brand-color-dark;
-$brand-success:   $rd-brand-color-light;
+$brand-success:   $rd-success-color;
 $brand-info:      $rd-info-color;
 $brand-danger:    $rd-danger-color;
 $brand-warning:   $rd-warning-color;
@@ -36,6 +36,27 @@ $brand-warning:   $rd-warning-color;
 $border-radius-base:  2px;
 $border-radius-large: 2px;
 $border-radius-small: 2px;
+$btn-primary-color: $white !default;
+// $btn-primary-color:              #fff !default;
+$btn-primary-bg: $brand-primary !default;
+$btn-warning-bg: $brand-warning !default;
+$btn-success-bg: $brand-success !default;
+$btn-info-bg:    $brand-info !default;
+$btn-danger-bg:  $brand-danger !default;
+
+// $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+
+
+// $btn-secondary-color:              #ffffff !default;
+// $btn-secondary-bg:                 $brand-primary !default;
+// $btn-secondary-border:             darken($btn-primary-bg, 5%) !default;
+
+$btn-primary-border: lighten($btn-primary-bg, 25%) !default;
+$btn-warning-border: lighten($btn-warning-bg, 25%) !default;
+$btn-success-border: lighten($btn-success-bg, 33%) !default;
+$btn-info-border: lighten($btn-info-bg, 15%) !default;
+$btn-danger-border: lighten($btn-danger-bg, 25%) !default;
+
 
 
 // Patch to make simple_form compatible with bootstrap 3
