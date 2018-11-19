@@ -1,10 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'nokogiri'
-# require 'faker'
 require_relative 'methods/seed_methods'
-
-
 
 ## clears terminal window
 system 'clear'
@@ -16,8 +13,6 @@ puts '*' * 23
 puts '- ' * 30 + "\n"
 
 start_working
-
-# sleep 5
 
 # puts "\nDestroying the database....."
 # sleep 1
@@ -56,7 +51,10 @@ all_metric_measures_array = []
 all_us_measures_array = []
 all_recipe_categories_array = []
 
-Dir.glob("*/*.json") do |json_file|
+
+
+Dir.glob("db/json_files/*.json").each do |json_file|
+  puts json_file
 
   recipe_file = JSON.parse(File.read("#{json_file}"))
 
@@ -100,8 +98,7 @@ end
 puts "\n >> Number of ingredients created: #{all_ingredients_array.count}"
 puts " >> Number of Metric Measures created: #{all_metric_measures_array.count}"
 puts " >> Number of US Measures created: #{all_us_measures_array.count}"
-p all_recipe_categories_array
 puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
 
-## kills status message operation
+# kills status message operation
 start_working.exit

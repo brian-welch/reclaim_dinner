@@ -111,8 +111,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
     t.string "photo_link"
     t.integer "prep_time"
     t.integer "cook_time"
-    t.integer "views"
-    t.integer "saves"
+    t.integer "views", default: 0
+    t.integer "saves", default: 0
     t.integer "servings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
