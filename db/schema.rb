@@ -15,19 +15,19 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "alergies", force: :cascade do |t|
+  create_table "allergies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "alergy_users", force: :cascade do |t|
-    t.bigint "alergy_id"
+  create_table "allergy_users", force: :cascade do |t|
+    t.bigint "allergy_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["alergy_id"], name: "index_alergy_users_on_alergy_id"
-    t.index ["user_id"], name: "index_alergy_users_on_user_id"
+    t.index ["allergy_id"], name: "index_allergy_users_on_allergy_id"
+    t.index ["user_id"], name: "index_allergy_users_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -167,17 +167,17 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
     t.boolean "children"
     t.integer "time_preference"
     t.bigint "food_preference_users_id"
-    t.bigint "alergy_users_id"
+    t.bigint "allergy_users_id"
     t.bigint "special_diet_users_id"
-    t.index ["alergy_users_id"], name: "index_users_on_alergy_users_id"
+    t.index ["allergy_users_id"], name: "index_users_on_allergy_users_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["food_preference_users_id"], name: "index_users_on_food_preference_users_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["special_diet_users_id"], name: "index_users_on_special_diet_users_id"
   end
 
-  add_foreign_key "alergy_users", "alergies"
-  add_foreign_key "alergy_users", "users"
+  add_foreign_key "allergy_users", "allergies"
+  add_foreign_key "allergy_users", "users"
   add_foreign_key "category_recipes", "categories"
   add_foreign_key "category_recipes", "recipes"
   add_foreign_key "food_preference_users", "food_preferences"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
   add_foreign_key "special_diet_users", "users"
   add_foreign_key "user_recipes", "recipes", column: "recipes_id"
   add_foreign_key "user_recipes", "users", column: "users_id"
-  add_foreign_key "users", "alergy_users", column: "alergy_users_id"
+  add_foreign_key "users", "allergy_users", column: "allergy_users_id"
   add_foreign_key "users", "food_preference_users", column: "food_preference_users_id"
   add_foreign_key "users", "special_diet_users", column: "special_diet_users_id"
 end

@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :recipes, through: :user_recipes
 
   has_many :food_preference_users, dependent: :destroy
-  has_many :alergy_users, dependent: :destroy
+  has_many :allergy_users, dependent: :destroy
+  has_many :allergies, through: :allergy_users
   has_many :special_diet_users, dependent: :destroy
 
 end
