@@ -1,0 +1,29 @@
+.footer-outer {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.2)0%, rgba(0, 0, 0, 0.2)100%);
+  background-color: $rd-brand-color-dark;
+  color: #f0f0f0;
+  padding: 60px 0;
+}
+
+.footer-cell {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 0 0 30px 0;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.middle-column-inner {
+  text-align: center;
+  p {
+    text-align: center;
+  }
+}
+
+.footer-middle-column-list {
+  padding: 0;
+  list-style: none;
+  li > a {
+    color: white !important;
+  }
+}
