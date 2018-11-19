@@ -1,7 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'nokogiri'
-require 'faker'
+# require 'faker'
 require_relative 'methods/seed_methods'
 
 

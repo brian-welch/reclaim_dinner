@@ -24,14 +24,33 @@ h6 {
   font-size: $font-size-base;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, td, span, input {
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 0 calc(1px * 1.2) 0 rgba(255, 255, 255, 1),
+               0 calc(-1px * 1.2) 0 rgba(0, 0, 0, 1);
+  color: #566575 !important;
+}
+
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid white;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, td, span, input, button, a, tr {
   transition: ease 300ms all;
+}
+img {
+  transition: 600ms eas all;
 }
 
 a {
-  transition: ease 300ms all;
   font-weight: bold;
+  outline: none !important;
+  button {
+    outline: none !important;
+  }
 }
+
+
 a:hover {
   text-decoration: none;
 
@@ -41,6 +60,7 @@ p {
   transition: ease 300ms all;
   line-height: 1.7em;
   letter-spacing: -0.02em;
+  text-align: justify !important;
 }
 
 
