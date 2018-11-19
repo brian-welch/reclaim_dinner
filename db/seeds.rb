@@ -14,8 +14,8 @@ puts '- ' * 30 + "\n"
 
 start_working
 
-# puts "\nDestroying the database....."
-# sleep 1
+puts "\nDestroying the database....."
+sleep 1
 
 # FoodPreference.destroy_all
 # FoodPreferenceUser.destroy_all
@@ -26,12 +26,12 @@ start_working
 # SpecialDiet.destroy_all
 # SpecialDietUser.destroy_all
 
-# Ingredient.destroy_all
-# MetricMeasure.destroy_all
-# ImperialMeasure.destroy_all
+Ingredient.destroy_all
+MetricMeasure.destroy_all
+ImperialMeasure.destroy_all
 # RecipeComponent.destroy_all
 
-# Category.destroy_all
+Category.destroy_all
 # SubCategory.destroy_all
 # SpicyLevel.destroy_all
 
@@ -58,8 +58,8 @@ Dir.glob("db/json_files/*.json").each do |json_file|
 
   recipe_file = JSON.parse(File.read("#{json_file}"))
 
-  puts "\nProcessing #{json_file}....."
-  sleep 0.1
+  # puts "\nProcessing #{json_file}....."
+  # sleep 0.1
 
   recipe_file['body']["recipes"].each do |recipe_array|
     recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
@@ -102,9 +102,21 @@ puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
 
 
 all_ingredients_array.each do |ingredient|
-  Ingredient.create!(name: ingredient);
+  Ingredient.create!(name: ingredient)
+
 end
 
+all_metric_measures_array.each do |measure|
+  MetricMeasure.create!(name: measure)
+end
+
+all_us_measures_array.each do |measure|
+  ImperialMeasure.create!(name: measure)
+end
+
+all_recipe_categories_array.each do |category|
+  Category.create!(name: category)
+end
 
 # kills status message operation
 start_working.exit
