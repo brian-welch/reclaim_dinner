@@ -22,7 +22,7 @@
     Everyone sha respect others' designated role and ability/responsibility to take decisions for their areas - and respect that decision objectively without offence.
   </li>
   <li>
-    Once the finished project is decided upon at the onset of the deveopment, no additional functionality, features, etc.; will be added or worked on until the agreed goal is reached. Only after the final app is developed should we add new functionality. 
+    Once the finished project is decided upon at the onset of the deveopment, no additional functionality, features, etc.; will be added or worked on until the agreed goal is reached. Only after the final app is developed should we add new functionality.
   </li>
 </ol>
 <hr>
@@ -205,7 +205,7 @@
         Form must be coded and tested
       </li>
       <li>
-        Cloudinary!
+        Cloudinary! - profile pics ()
       </li>
       <li>
         Social Media API connection!
@@ -267,5 +267,268 @@
       </li>
     </ul>
   </p>
+
+
+
+
   <hr>
 
+
+
+
+  <h2>Phase 3.1</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        User can use and save favorite recipes
+      </li>
+    </ul>
+  </p>
+  <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        AJAX & cookies
+      </li>
+    </ul>
+  </p>
+
+
+
+
+  <hr>
+
+
+
+
+  <h2>Phase 4</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        User can view itemized shopping list.
+      </li>
+    </ul>
+  </p>
+  <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li>?</li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li>Shopping Page</li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        Controller and Routes
+      </li>
+      <li>
+        Collecting and combining ingredients from multiple recipes
+      </li>
+      <li>
+      </li>
+    </ul>
+  </p>
+
+
+
+
+  <hr>
+
+
+
+
+  <h2>Phase 4.1</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        Filters on index page
+      </li>
+    </ul>
+  </p>
+  <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li>Filter form</li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        AJAX filtering - form posting form index page to index page
+      </li>
+      <li>
+        ?
+      </li>
+      <li>
+      </li>
+    </ul>
+  </p>
+
+
+
+
+  <hr>
+
+
+
+
+  <h2>Phase 4.2</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        Only recipes that follow a user's preference will show
+      </li>
+    </ul>
+  </p>
+  <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li>?</li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        Controllers: filetering out recipes deliveredd to index page
+      </li>
+      <li>
+        Collecting and combining ingredients from multiple recipes
+      </li>
+      <li>
+      </li>
+    </ul>
+  </p>
+
+
+
+
+  <hr>
+
+
+
+
+  <h2>Phase 5</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        User can recieve weekly emails from app reminders and/or status messages:
+      </li>
+    </ul>
+  </p>
+  <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li> - </li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        email functionality and cookies
+      </li>
+      <li>
+        new db migration?
+      </li>
+      <li>
+      </li>
+    </ul>
+  </p>
+
+
+
+
+  <hr>
+
+
+
+
+  <h2>Phase 6</h2>
+  <p><strong>Objective:</strong>
+    <ul>
+      <li>
+        How can we jazz this up?
+      </li>
+    </ul>
+  </p>
+  <!-- <p><strong>Frontend:</strong>
+    <ul>
+      <li>
+        Componants to be completed for this objective:
+        <ul>
+          <li>?</li>
+        </ul>
+      </li>
+      <li>
+        Layout to be completed for these views:
+        <ul>
+          <li>Shopping Page</li>
+        </ul>
+      </li>
+    </ul>
+  </p>
+  <p><strong>Backend:</strong>
+    <ul>
+      <li>
+        Controller and Routes
+      </li>
+      <li>
+        Collecting and combining ingredients from multiple recipes
+      </li>
+      <li>
+      </li>
+    </ul>
+  </p> -->
