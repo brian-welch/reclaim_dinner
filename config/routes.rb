@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'recipes/user_recipes'
   devise_for :users
   root to: 'pages#home'
   get 'design', to: 'pages#design'
