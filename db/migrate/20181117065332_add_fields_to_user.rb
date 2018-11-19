@@ -16,7 +16,7 @@ class AddFieldsToUser < ActiveRecord::Migration[5.2]
     add_column :users, :children, :boolean
     add_column :users, :time_preference, :integer
     add_reference :users, :food_preference_users, foreign_key: true
-    add_reference :users, :alergy_users, foreign_key: true
+    add_reference :users, :allergy_users, foreign_key: true
     add_reference :users, :special_diet_users, foreign_key: true
   end
 end

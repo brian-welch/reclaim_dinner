@@ -20,8 +20,8 @@ start_working
 # FoodPreference.destroy_all
 # FoodPreferenceUser.destroy_all
 
-# Alergy.destroy_all
-# AlergyUser.destroy_all
+# Allergy.destroy_all
+# AllergyUser.destroy_all
 
 # SpecialDiet.destroy_all
 # SpecialDietUser.destroy_all
