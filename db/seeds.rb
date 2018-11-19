@@ -100,5 +100,11 @@ puts " >> Number of Metric Measures created: #{all_metric_measures_array.count}"
 puts " >> Number of US Measures created: #{all_us_measures_array.count}"
 puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
 
+
+all_ingredients_array.each do |ingredient|
+  Ingredient.create!(name: ingredient);
+end
+
+
 # kills status message operation
 start_working.exit
