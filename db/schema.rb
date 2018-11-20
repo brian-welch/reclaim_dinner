@@ -81,28 +81,28 @@ ActiveRecord::Schema.define(version: 2018_11_20_103218) do
   create_table "recipe_ingredients", force: :cascade do |t|
     t.string "metric_quantity"
     t.string "imperial_quantity"
-    t.bigint "ingredients_id"
-    t.bigint "imperial_measures_id"
-    t.bigint "metric_measures_id"
-    t.bigint "recipes_id"
+    t.bigint "ingredient_id"
+    t.bigint "imperial_measure_id"
+    t.bigint "metric_measure_id"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["imperial_measures_id"], name: "index_recipe_ingredients_on_imperial_measures_id"
-    t.index ["ingredients_id"], name: "index_recipe_ingredients_on_ingredients_id"
-    t.index ["metric_measures_id"], name: "index_recipe_ingredients_on_metric_measures_id"
-    t.index ["recipes_id"], name: "index_recipe_ingredients_on_recipes_id"
+    t.index ["imperial_measure_id"], name: "index_recipe_ingredients_on_imperial_measure_id"
+    t.index ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id"
+    t.index ["metric_measure_id"], name: "index_recipe_ingredients_on_metric_measure_id"
+    t.index ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id"
   end
 
   create_table "recipe_ratings", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "stars"
-    t.bigint "users_id"
-    t.bigint "recipes_id"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipes_id"], name: "index_recipe_ratings_on_recipes_id"
-    t.index ["users_id"], name: "index_recipe_ratings_on_users_id"
+    t.index ["recipe_id"], name: "index_recipe_ratings_on_recipe_id"
+    t.index ["user_id"], name: "index_recipe_ratings_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -136,12 +136,12 @@ ActiveRecord::Schema.define(version: 2018_11_20_103218) do
 
   create_table "user_recipes", force: :cascade do |t|
     t.date "chosen_date"
-    t.bigint "users_id"
-    t.bigint "recipes_id"
+    t.bigint "user_id"
+    t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["recipes_id"], name: "index_user_recipes_on_recipes_id"
-    t.index ["users_id"], name: "index_user_recipes_on_users_id"
+    t.index ["recipe_id"], name: "index_user_recipes_on_recipe_id"
+    t.index ["user_id"], name: "index_user_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -167,14 +167,14 @@ ActiveRecord::Schema.define(version: 2018_11_20_103218) do
     t.string "pinterest_username"
     t.boolean "children"
     t.integer "time_preference"
-    t.bigint "food_preference_users_id"
-    t.bigint "allergy_users_id"
-    t.bigint "special_diet_users_id"
-    t.index ["allergy_users_id"], name: "index_users_on_allergy_users_id"
+    t.bigint "food_preference_user_id"
+    t.bigint "allergy_user_id"
+    t.bigint "special_diet_user_id"
+    t.index ["allergy_user_id"], name: "index_users_on_allergy_user_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["food_preference_users_id"], name: "index_users_on_food_preference_users_id"
+    t.index ["food_preference_user_id"], name: "index_users_on_food_preference_user_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["special_diet_users_id"], name: "index_users_on_special_diet_users_id"
+    t.index ["special_diet_user_id"], name: "index_users_on_special_diet_user_id"
   end
 
   add_foreign_key "allergy_users", "allergies"
@@ -183,17 +183,17 @@ ActiveRecord::Schema.define(version: 2018_11_20_103218) do
   add_foreign_key "category_recipes", "recipes"
   add_foreign_key "food_preference_users", "food_preferences"
   add_foreign_key "food_preference_users", "users"
-  add_foreign_key "recipe_ingredients", "imperial_measures", column: "imperial_measures_id"
-  add_foreign_key "recipe_ingredients", "ingredients", column: "ingredients_id"
-  add_foreign_key "recipe_ingredients", "metric_measures", column: "metric_measures_id"
-  add_foreign_key "recipe_ingredients", "recipes", column: "recipes_id"
-  add_foreign_key "recipe_ratings", "recipes", column: "recipes_id"
-  add_foreign_key "recipe_ratings", "users", column: "users_id"
+  add_foreign_key "recipe_ingredients", "imperial_measures"
+  add_foreign_key "recipe_ingredients", "ingredients"
+  add_foreign_key "recipe_ingredients", "metric_measures"
+  add_foreign_key "recipe_ingredients", "recipes"
+  add_foreign_key "recipe_ratings", "recipes"
+  add_foreign_key "recipe_ratings", "users"
   add_foreign_key "special_diet_users", "special_diets"
   add_foreign_key "special_diet_users", "users"
-  add_foreign_key "user_recipes", "recipes", column: "recipes_id"
-  add_foreign_key "user_recipes", "users", column: "users_id"
-  add_foreign_key "users", "allergy_users", column: "allergy_users_id"
-  add_foreign_key "users", "food_preference_users", column: "food_preference_users_id"
-  add_foreign_key "users", "special_diet_users", column: "special_diet_users_id"
+  add_foreign_key "user_recipes", "recipes"
+  add_foreign_key "user_recipes", "users"
+  add_foreign_key "users", "allergy_users"
+  add_foreign_key "users", "food_preference_users"
+  add_foreign_key "users", "special_diet_users"
 end
