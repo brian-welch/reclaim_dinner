@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   resources :user_recipes, only: [:create, :edit, :update]
 
 
-
   get 'dashboard', to: 'dashboards#index', as: "dashboard"
   post 'dashboard', to: 'dashboards#create'
+
+  get 'recipes/:id', to: 'recipes#show',
 
 end
