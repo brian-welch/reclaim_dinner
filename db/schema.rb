@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_17_084623) do
+ActiveRecord::Schema.define(version: 2018_11_20_103218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,21 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
     t.index ["recipes_id"], name: "index_recipe_components_on_recipes_id"
   end
 
+  create_table "recipe_ingredients", force: :cascade do |t|
+    t.string "metric_quantity"
+    t.string "imperial_quantity"
+    t.bigint "ingredients_id"
+    t.bigint "imperial_measures_id"
+    t.bigint "metric_measures_id"
+    t.bigint "recipes_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["imperial_measures_id"], name: "index_recipe_ingredients_on_imperial_measures_id"
+    t.index ["ingredients_id"], name: "index_recipe_ingredients_on_ingredients_id"
+    t.index ["metric_measures_id"], name: "index_recipe_ingredients_on_metric_measures_id"
+    t.index ["recipes_id"], name: "index_recipe_ingredients_on_recipes_id"
+  end
+
   create_table "recipe_ratings", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -107,7 +122,6 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "name"
-    t.text "instructions"
     t.string "photo_link"
     t.integer "prep_time"
     t.integer "cook_time"
@@ -116,6 +130,8 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
     t.integer "servings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source"
+    t.text "instructions", default: [], array: true
   end
 
   create_table "special_diet_users", force: :cascade do |t|
@@ -186,6 +202,10 @@ ActiveRecord::Schema.define(version: 2018_11_17_084623) do
   add_foreign_key "recipe_components", "ingredients", column: "ingredients_id"
   add_foreign_key "recipe_components", "metric_measures", column: "metric_measures_id"
   add_foreign_key "recipe_components", "recipes", column: "recipes_id"
+  add_foreign_key "recipe_ingredients", "imperial_measures", column: "imperial_measures_id"
+  add_foreign_key "recipe_ingredients", "ingredients", column: "ingredients_id"
+  add_foreign_key "recipe_ingredients", "metric_measures", column: "metric_measures_id"
+  add_foreign_key "recipe_ingredients", "recipes", column: "recipes_id"
   add_foreign_key "recipe_ratings", "recipes", column: "recipes_id"
   add_foreign_key "recipe_ratings", "users", column: "users_id"
   add_foreign_key "special_diet_users", "special_diets"
