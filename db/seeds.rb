@@ -69,10 +69,46 @@ Dir.glob("db/json_files/*.json").each do |json_file|
 
 
   recipe_file_array.each do |recipe_array|
-    recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
-      unless all_ingredients_array.include?(ingredient_array["name"])
-        all_ingredients_array << ingredient_array["name"]
+    # Will NOT add recipes whose recipe steps aren't incremented
+    unless recipe_array["analyzedInstructions"].size.zero?
+
+      # Creating Ingredient, MetricMeasure & ImperialMeasure Instances
+      recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
+
+        # Will NOT create duplicate Ingredient Instances
+        unless !Ingredient.find_by_name(ingredient_array["name"]).nil?
+          Ingredient.create!(name: ingredient_array["name"])
+        end
+
+        # Will NOT create duplicate MetricMeasure Instances
+        unless !MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]).nil?
+          MetricMeasure.create!(name: ingredient_array["measures"]["metric"]["unitShort"])
+        end
+
+        # Will NOT create duplicate ImperialMeasure Instances
+        unless !ImperialMeasure.find_by_name(ingredient_array["measures"]["us"]["unitShort"]).nil?
+          ImperialMeasure.create!(name: ingredient_array["measures"]["us"]["unitShort"])
+        end
       end
+
+      # Creating Category Instances
+      recipe_array["cuisines"].each_with_index do |cuisines, i|
+        unless !Category.find_by_name(cuisines).nil?  || cuisines.size.zero?
+          Category.create!(name: cuisines)
+        end
+      end
+
+      # Creating Recipe Instances - a big one
+      # Start by creating instructions array
+      analyzedInstructions_array = []
+      unless recipe_array["analyzedInstructions"].size.zero?
+        recipe_array["analyzedInstructions"][0]["steps"].each do |step|
+            analyzedInstructions_array << step["step"]
+        end
+      end
+
+
+
     end
   end
 
