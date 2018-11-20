@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_170609) do
+ActiveRecord::Schema.define(version: 2018_11_20_102335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,21 +76,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_170609) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "recipe_components", force: :cascade do |t|
-    t.string "metric_quantity"
-    t.string "imperial_quantity"
-    t.bigint "ingredients_id"
-    t.bigint "imperial_measures_id"
-    t.bigint "metric_measures_id"
-    t.bigint "recipes_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["imperial_measures_id"], name: "index_recipe_components_on_imperial_measures_id"
-    t.index ["ingredients_id"], name: "index_recipe_components_on_ingredients_id"
-    t.index ["metric_measures_id"], name: "index_recipe_components_on_metric_measures_id"
-    t.index ["recipes_id"], name: "index_recipe_components_on_recipes_id"
   end
 
   create_table "recipe_ingredients", force: :cascade do |t|
@@ -198,10 +183,6 @@ ActiveRecord::Schema.define(version: 2018_11_19_170609) do
   add_foreign_key "category_recipes", "recipes"
   add_foreign_key "food_preference_users", "food_preferences"
   add_foreign_key "food_preference_users", "users"
-  add_foreign_key "recipe_components", "imperial_measures", column: "imperial_measures_id"
-  add_foreign_key "recipe_components", "ingredients", column: "ingredients_id"
-  add_foreign_key "recipe_components", "metric_measures", column: "metric_measures_id"
-  add_foreign_key "recipe_components", "recipes", column: "recipes_id"
   add_foreign_key "recipe_ingredients", "imperial_measures", column: "imperial_measures_id"
   add_foreign_key "recipe_ingredients", "ingredients", column: "ingredients_id"
   add_foreign_key "recipe_ingredients", "metric_measures", column: "metric_measures_id"
