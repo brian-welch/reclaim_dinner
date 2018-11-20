@@ -16,7 +16,7 @@ puts '- ' * 30 + "\n"
 start_working
 
 puts "\nDestroying the database!!"
-sleep 1
+sleep 3
 
 Recipe.destroy_all
 RecipeIngredient.destroy_all
@@ -27,8 +27,6 @@ MetricMeasure.destroy_all
 ImperialMeasure.destroy_all
 Category.destroy_all
 
-puts "\nDatabase destroyed."
-sleep 1
 
 # FoodPreference.destroy_all
 # FoodPreferenceUser.destroy_all
@@ -47,13 +45,10 @@ sleep 1
 # puts " >> Entire database deleted!\n"
 # puts '- ' * 30 + "\n\n"
 
-puts '- ' * 30 + "\n"
 
-all_ingredients_array = []
-all_metric_measures_array = []
-all_us_measures_array = []
-all_recipe_categories_array = []
-all_recipe_array_of_arrays = []
+puts "\nDatabase destroyed."
+puts '- ' * 30 + "\n"
+sleep 2
 
 
 puts "\nPreparing to populate the database....."
@@ -65,7 +60,7 @@ Dir.glob("db/json_files/*.json").each do |json_file|
   recipe_file = JSON.parse(File.read("#{json_file}"))
   recipe_file_array = recipe_file['body']["recipes"]
 
-
+  puts "\n\nProcessing #{json_file}\n"
   recipe_file_array.each do |recipe_array|
     # Will NOT add recipes whose recipe steps aren't incremented
     unless recipe_array["analyzedInstructions"].size.zero?
@@ -119,8 +114,8 @@ Dir.glob("db/json_files/*.json").each do |json_file|
       # Skip recipes which don't have any categories
       unless !recipe_array["cuisines"].size.zero?
         recipe_array["cuisines"].each do |category_name|
-          CategoryRecipe.create!(recipe_id: Recipe.find_by_name(recipe_array["title"]).id,
-                                 category_id: Category.find_by_name(category_name).id)
+          CategoryRecipe.create!(recipe: Recipe.find_by_name(recipe_array["title"]),
+                                 category: Category.find_by_name(category_name))
         end
       end
 
@@ -128,118 +123,23 @@ Dir.glob("db/json_files/*.json").each do |json_file|
       recipe_array["extendedIngredients"].each do |ingredient_array|
 
 
-        RecipeIngredient.create!(recipe_id: Recipe.find_by_name(recipe_array["title"]).id,
+        RecipeIngredient.create!(recipe: Recipe.find_by_name(recipe_array["title"]),
                                  metric_quantity: ingredient_array["measures"]["metric"]["amount"],
                                  imperial_quantity: ingredient_array["measures"]["us"]["amount"],
-                                 ingredients_id: Ingredient.find_by_name(ingredient_array["name"]).id,
-                                 imperial_measures_id: ImperialMeasure.find_by_name(ingredient_array["measures"]["us"]["unitShort"]).id,
-                                 metric_measures_id: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]).id)
+                                 ingredient: Ingredient.find_by_name(ingredient_array["name"]),
+                                 imperial_measure: ImperialMeasure.find_by_name(ingredient_array["measures"]["us"]["unitShort"]),
+                                 metric_measure: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]))
       end
-
-
 
     # This 'end' ends the unless condition which ignores recipes without incrememented instructions steps
     end
 
   # This 'end' ends the iteration of 100 recipes or one json file
   end
-
-
-
-  ################# this crap will be removed when recipe seed testing is completed
-
-  # recipe_file_array.each do |recipe_array|
-  #   recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
-  #     unless all_metric_measures_array.include?(ingredient_array["measures"]["metric"]["unitShort"])
-  #       all_metric_measures_array << ingredient_array["measures"]["metric"]["unitShort"]
-  #     end
-  #   end
-  # end
-
-  # recipe_file_array.each do |recipe_array|
-  #   recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
-  #     unless all_us_measures_array.include?(ingredient_array["measures"]["us"]["unitShort"])
-  #       all_us_measures_array << ingredient_array["measures"]["us"]["unitShort"]
-  #     end
-  #   end
-  # end
-
-  # recipe_file_array.each do |recipe_array|
-  #   recipe_array["cuisines"].each_with_index do |cuisines, i|
-  #     unless all_recipe_categories_array.include?(cuisines) || cuisines.size.zero?
-  #       all_recipe_categories_array << cuisines
-  #     end
-  #   end
-  # end
-
-  # recipe_file_array.each do |recipe_array|
-  #     analyzedInstructions_array = []
-  #     unless recipe_array["analyzedInstructions"].size.zero?
-  #       recipe_array["analyzedInstructions"][0]["steps"].each do |step|
-  #           analyzedInstructions_array << step["step"]
-  #       end
-  #     end
-  #     single_recipe_array = []
-  #     single_recipe_array << recipe_array["title"]
-  #     single_recipe_array << analyzedInstructions_array
-  #     single_recipe_array << recipe_array["image"]
-  #     single_recipe_array << recipe_array["preparationMinutes"]
-  #     single_recipe_array << recipe_array["cookingMinutes"]
-  #     single_recipe_array << recipe_array["servings"]
-  #     single_recipe_array << recipe_array["servings"]
-  #     single_recipe_array << recipe_array["creditsText"]
-  #     unless all_recipe_array_of_arrays.include?(single_recipe_array)
-  #       all_recipe_array_of_arrays << single_recipe_array
-  #     end
-
-  ################# end of 'this crap will be removed when recipe seed testing is completed'
-
-
-  end
 # this 'end' ends the iteration through all json files in the directory
 end
 
-
-
-
-
-# puts "\n >> Number of Ingredients created: #{all_ingredients_array.count}"
-# puts " >> Number of MetricMeasures created: #{all_metric_measures_array.count}"
-# puts " >> Number of ImperialMeasures created: #{all_us_measures_array.count}"
-# puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
-# puts " >> Number of Recipes created: #{all_recipe_array_of_arrays.count}"
-
-puts "\nPopulating the database!!"
-sleep 1
-
-
-all_ingredients_array.each do |ingredient|
-  Ingredient.create!(name: ingredient)
-end
-puts "\n#{Ingredient.count} Ingreients in the database!!"
-sleep 1
-
-
-all_metric_measures_array.each do |measure|
-  MetricMeasure.create!(name: measure)
-end
-puts "\n#{MetricMeasure.count} Metric Measures in the database!!"
-sleep 1
-
-
-all_us_measures_array.each do |measure|
-  ImperialMeasure.create!(name: measure)
-end
-puts "\n#{ImperialMeasure.count} Imperial Measures in the database!!"
-sleep 1
-
-
-all_recipe_categories_array.each do |category|
-  Category.create!(name: category)
-end
-puts "\n#{Category.count} Categories in the database!!"
-sleep 1
-
+puts "\nDatabase Created!"
 
 
 
