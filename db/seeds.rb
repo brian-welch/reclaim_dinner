@@ -124,6 +124,8 @@ Dir.glob("db/json_files/*.json").each do |json_file|
 
 
 
+
+
 end
 
 # puts "\n >> Number of Ingredients created: #{all_ingredients_array.count}"
@@ -134,6 +136,7 @@ end
 
 puts "\nPopulating the database!!"
 sleep 1
+
 
 all_ingredients_array.each do |ingredient|
   Ingredient.create!(name: ingredient)
@@ -149,12 +152,12 @@ puts "\n#{MetricMeasure.count} Metric Measures in the database!!"
 sleep 1
 
 
-
 all_us_measures_array.each do |measure|
   ImperialMeasure.create!(name: measure)
 end
 puts "\n#{ImperialMeasure.count} Imperial Measures in the database!!"
 sleep 1
+
 
 all_recipe_categories_array.each do |category|
   Category.create!(name: category)
