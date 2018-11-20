@@ -4,8 +4,8 @@ class CreateRecipeRatings < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :body
       t.integer :stars
-      t.references :users, foreign_key: true
-      t.references :recipes, foreign_key: true
+      t.references :user, foreign_key: true
+      t.references :recipe, foreign_key: true
 
       t.timestamps
     end
