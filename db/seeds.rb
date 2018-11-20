@@ -19,6 +19,8 @@ puts "\nDestroying the database!!"
 sleep 1
 
 Recipe.destroy_all
+RecipeIngredient.destroy_all
+CategoryRecipe.destroy_all
 
 Ingredient.destroy_all
 MetricMeasure.destroy_all
@@ -36,10 +38,6 @@ sleep 1
 
 # SpecialDiet.destroy_all
 # SpecialDietUser.destroy_all
-# RecipeComponent.destroy_all
-
-# SubCategory.destroy_all
-# SpicyLevel.destroy_all
 
 # UserRecipe.destroy_all
 # RecipeRating.destroy_all
@@ -106,63 +104,92 @@ Dir.glob("db/json_files/*.json").each do |json_file|
             analyzedInstructions_array << step["step"]
         end
       end
-
-
-
-    end
-  end
-
-  recipe_file_array.each do |recipe_array|
-    recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
-      unless all_metric_measures_array.include?(ingredient_array["measures"]["metric"]["unitShort"])
-        all_metric_measures_array << ingredient_array["measures"]["metric"]["unitShort"]
+      # NOW instanting Recipe model
+      unless !Recipe.find_by_name(recipe_array["title"]).nil?
+        Recipe.create!(name: recipe_array["title"],
+                       instructions: analyzedInstructions_array,
+                       photo_link: recipe_array["image"],
+                       prep_time: recipe_array["preparationMinutes"],
+                       cook_time: recipe_array["cookingMinutes"],
+                       servings: recipe_array["servings"],
+                       source: recipe_array["creditsText"])
       end
-    end
-  end
 
-  recipe_file_array.each do |recipe_array|
-    recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
-      unless all_us_measures_array.include?(ingredient_array["measures"]["us"]["unitShort"])
-        all_us_measures_array << ingredient_array["measures"]["us"]["unitShort"]
-      end
-    end
-  end
-
-  recipe_file_array.each do |recipe_array|
-    recipe_array["cuisines"].each_with_index do |cuisines, i|
-      unless all_recipe_categories_array.include?(cuisines) || cuisines.size.zero?
-        all_recipe_categories_array << cuisines
-      end
-    end
-  end
-
-  recipe_file_array.each do |recipe_array|
-      analyzedInstructions_array = []
-      unless recipe_array["analyzedInstructions"].size.zero?
-        recipe_array["analyzedInstructions"][0]["steps"].each do |step|
-            analyzedInstructions_array << step["step"]
+      # Creating RecipeCategory join table
+      # Skip recipes which don't have any categories
+      unless !recipe_array["cuisines"].size.zero?
+        recipe_array["cuisines"].each do |category_name|
+          CategoryRecipe.create!(recipe_id: Recipe.find_by_name(recipe_array["title"]).id,
+                                 category_id: Category.find_by_name(category_name).id)
         end
       end
-      single_recipe_array = []
-      single_recipe_array << recipe_array["title"]
-      single_recipe_array << analyzedInstructions_array
-      single_recipe_array << recipe_array["image"]
-      single_recipe_array << recipe_array["preparationMinutes"]
-      single_recipe_array << recipe_array["cookingMinutes"]
-      single_recipe_array << recipe_array["servings"]
-      single_recipe_array << recipe_array["servings"]
-      single_recipe_array << recipe_array["creditsText"]
-      unless all_recipe_array_of_arrays.include?(single_recipe_array)
-        all_recipe_array_of_arrays << single_recipe_array
-      end
+
+
+
+    # This 'end' ends the unless condition which ignores recipes without incrememented instructions steps
+    end
+
+  # This 'end' ends the iteration of 100 recipes or one json file
   end
 
 
 
+  ################# this crap will be removed when recipe seed testing is completed
+
+  # recipe_file_array.each do |recipe_array|
+  #   recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
+  #     unless all_metric_measures_array.include?(ingredient_array["measures"]["metric"]["unitShort"])
+  #       all_metric_measures_array << ingredient_array["measures"]["metric"]["unitShort"]
+  #     end
+  #   end
+  # end
+
+  # recipe_file_array.each do |recipe_array|
+  #   recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
+  #     unless all_us_measures_array.include?(ingredient_array["measures"]["us"]["unitShort"])
+  #       all_us_measures_array << ingredient_array["measures"]["us"]["unitShort"]
+  #     end
+  #   end
+  # end
+
+  # recipe_file_array.each do |recipe_array|
+  #   recipe_array["cuisines"].each_with_index do |cuisines, i|
+  #     unless all_recipe_categories_array.include?(cuisines) || cuisines.size.zero?
+  #       all_recipe_categories_array << cuisines
+  #     end
+  #   end
+  # end
+
+  # recipe_file_array.each do |recipe_array|
+  #     analyzedInstructions_array = []
+  #     unless recipe_array["analyzedInstructions"].size.zero?
+  #       recipe_array["analyzedInstructions"][0]["steps"].each do |step|
+  #           analyzedInstructions_array << step["step"]
+  #       end
+  #     end
+  #     single_recipe_array = []
+  #     single_recipe_array << recipe_array["title"]
+  #     single_recipe_array << analyzedInstructions_array
+  #     single_recipe_array << recipe_array["image"]
+  #     single_recipe_array << recipe_array["preparationMinutes"]
+  #     single_recipe_array << recipe_array["cookingMinutes"]
+  #     single_recipe_array << recipe_array["servings"]
+  #     single_recipe_array << recipe_array["servings"]
+  #     single_recipe_array << recipe_array["creditsText"]
+  #     unless all_recipe_array_of_arrays.include?(single_recipe_array)
+  #       all_recipe_array_of_arrays << single_recipe_array
+  #     end
+
+  ################# end of 'this crap will be removed when recipe seed testing is completed'
 
 
-
+  end
+# this 'end' ends the iteration through all json files in the directory
 end
+
+
+
+
 
 # puts "\n >> Number of Ingredients created: #{all_ingredients_array.count}"
 # puts " >> Number of MetricMeasures created: #{all_metric_measures_array.count}"
