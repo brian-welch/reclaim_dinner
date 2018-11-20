@@ -2,7 +2,8 @@ class CreateRecipes < ActiveRecord::Migration[5.2]
   def change
     create_table :recipes do |t|
       t.string :name
-      t.text :instructions
+      # added the array designation to instuctions...ok to alter existing migration file?
+      t.text :instructions, array: true, default: []
       t.string :photo_link
       t.integer :prep_time
       t.integer :cook_time
