@@ -18,6 +18,8 @@ start_working
 puts "\nDestroying the database!!"
 sleep 1
 
+Recipe.destroy_all
+
 Ingredient.destroy_all
 MetricMeasure.destroy_all
 ImperialMeasure.destroy_all
@@ -42,12 +44,12 @@ sleep 1
 # UserRecipe.destroy_all
 # RecipeRating.destroy_all
 
-# Recipe.destroy_all
 # User.destroy_all
 
 # puts " >> Entire database deleted!\n"
 # puts '- ' * 30 + "\n\n"
 
+puts '- ' * 30 + "\n"
 
 all_ingredients_array = []
 all_metric_measures_array = []
@@ -120,13 +122,15 @@ Dir.glob("db/json_files/*.json").each do |json_file|
   end
 
 
+
+
 end
 
-puts "\n >> Number of Ingredients created: #{all_ingredients_array.count}"
-puts " >> Number of MetricMeasures created: #{all_metric_measures_array.count}"
-puts " >> Number of ImperialMeasures created: #{all_us_measures_array.count}"
-puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
-puts " >> Number of Recipes created: #{all_recipe_array_of_arrays.count}"
+# puts "\n >> Number of Ingredients created: #{all_ingredients_array.count}"
+# puts " >> Number of MetricMeasures created: #{all_metric_measures_array.count}"
+# puts " >> Number of ImperialMeasures created: #{all_us_measures_array.count}"
+# puts " >> Number of Categories created: #{all_recipe_categories_array.count}"
+# puts " >> Number of Recipes created: #{all_recipe_array_of_arrays.count}"
 
 puts "\nPopulating the database!!"
 sleep 1
@@ -134,16 +138,29 @@ sleep 1
 all_ingredients_array.each do |ingredient|
   Ingredient.create!(name: ingredient)
 end
+puts "\n#{Ingredient.count} Ingreients in the database!!"
+sleep 1
+
+
 all_metric_measures_array.each do |measure|
   MetricMeasure.create!(name: measure)
 end
+puts "\n#{MetricMeasure.count} Metric Measures in the database!!"
+sleep 1
+
+
+
 all_us_measures_array.each do |measure|
   ImperialMeasure.create!(name: measure)
 end
+puts "\n#{ImperialMeasure.count} Imperial Measures in the database!!"
+sleep 1
+
 all_recipe_categories_array.each do |category|
   Category.create!(name: category)
 end
-
+puts "\n#{Category.count} Categories in the database!!"
+sleep 1
 
 
 
