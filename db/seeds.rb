@@ -115,13 +115,25 @@ Dir.glob("db/json_files/*.json").each do |json_file|
                        source: recipe_array["creditsText"])
       end
 
-      # Creating RecipeCategory join table
+      # Creating RecipeCategory join table - Maybe move this outside the recipe array iteration
       # Skip recipes which don't have any categories
       unless !recipe_array["cuisines"].size.zero?
         recipe_array["cuisines"].each do |category_name|
           CategoryRecipe.create!(recipe_id: Recipe.find_by_name(recipe_array["title"]).id,
                                  category_id: Category.find_by_name(category_name).id)
         end
+      end
+
+      # Creating RecipeIngredient join table - Maybe move this outside the recipe array iteration
+      recipe_array["extendedIngredients"].each do |ingredient_array|
+
+
+        RecipeIngredient.create!(recipe_id: Recipe.find_by_name(recipe_array["title"]).id,
+                                 metric_quantity: ingredient_array["measures"]["metric"]["amount"],
+                                 imperial_quantity: ingredient_array["measures"]["us"]["amount"],
+                                 ingredients_id: Ingredient.find_by_name(ingredient_array["name"]).id,
+                                 imperial_measures_id: ImperialMeasure.find_by_name(ingredient_array["measures"]["us"]["unitShort"]).id,
+                                 metric_measures_id: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]).id)
       end
 
 
