@@ -1,4 +1,4 @@
-class CreateCategoryRecipe < ActiveRecord::Migration[5.2]
+class CreateCategoryRecipes < ActiveRecord::Migration[5.2]
   def change
     create_table :category_recipes do |t|
       t.references :category, foreign_key: true
