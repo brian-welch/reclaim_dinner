@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#index', as: "dashboard"
   post 'dashboard', to: 'dashboards#create'
 
-  get 'recipes/:id', to: 'recipes#show',
+  get 'recipes/:id', to: 'recipes#show'
 
 end
