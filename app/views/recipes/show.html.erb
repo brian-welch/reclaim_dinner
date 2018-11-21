@@ -38,18 +38,15 @@
         <hr>
         <h5>Ingredients:</h5>
         <ul>
-          <li>Lorem ipsum dolor sit</li>
-          <li>Ius ea dicat zril</li>
-          <li>Docendi vituperata dissentiet ea</li>
-          <li>Eleifend vituperata scripserit vis</li>
-          <li>Veniam vituperatoribus vim ad</li>
-          <li>Eu choro clita pr</li>
-          <li>Te habeo zril scripta</li>
-          <li>Voluptua reformidans in sea</li>
-          <li>Magna ornatus dolorum an</li>
-          <li>Latine impedit reprehendunt eu</li>
-        </ul>
+          <% @recipe_ingredients.each do |ingred_obj| %>
+          <li>
+            <%= ingred_obj.metric_quantity.to_i %>
+              <%= MetricMeasure.find(ingred_obj.metric_measure_id).name %>
+              <%= Ingredient.find(ingred_obj.ingredient_id).name %>
 
+              </li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
@@ -77,5 +74,5 @@
   </div>
 </div>
 
-<% raise %>
+<% #raise %>
 </div>

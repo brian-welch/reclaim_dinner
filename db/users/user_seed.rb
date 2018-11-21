@@ -17,9 +17,6 @@ users = [
     pinterest_username: "",
     children: false,
     time_preference: 60,
-    t.bigint "food_preference_user_id"
-    t.bigint "allergy_user_id"
-    t.bigint "special_diet_user_id"
   }, {
     first_name: "beltrán",
     last_name: "sainz de vicuña nowack",
@@ -38,9 +35,6 @@ users = [
     pinterest_username: "",
     children: false,
     time_preference: 60,
-    t.bigint "food_preference_user_id"
-    t.bigint "allergy_user_id"
-    t.bigint "special_diet_user_id"
   }, {
     first_name: "makena",
     last_name: "hawley",
@@ -59,8 +53,5 @@ users = [
     pinterest_username: "",
     children: false,
     time_preference: 60,
-    t.bigint "food_preference_user_id"
-    t.bigint "allergy_user_id"
-    t.bigint "special_diet_user_id"
   }
 ]
