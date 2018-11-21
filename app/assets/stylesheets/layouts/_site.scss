@@ -1,3 +1,8 @@
+body {
+  padding-top: 70px;
+}
+
+
 
 h1 {
   transition: ease 300ms all;
@@ -63,6 +68,11 @@ p {
   text-align: justify !important;
 }
 
-
+.add-brand-corners {
+  border-bottom-right-radius: 8px 50%;
+  border-bottom-left-radius: 8px 50%;
+  border-top-right-radius: 8px 50%;
+  border-top-left-radius: 8px 50%;
+}
 
 
