@@ -1,0 +1,5 @@
+<div id="<%= recipe.id %>" class="dish-image-wrapper">
+  <%= link_to recipe do -%>
+    <div class="dish-image" style="background-image:url(<%= image_path recipe.photo_link %>);"></div>
+  <% end %>
+</div>

@@ -1,13 +1,29 @@
 <div class="recipes-flexbox">
   <% @seven_recipes.each do |recipe| %>
-  <div class="dish-image-wrapper">
-
-    <%= link_to recipe do -%>
-      <div class="dish-image" style="background-image:url(<%= image_path recipe.photo_link %>);"></div>
-      <%#= image_tag recipe.photo_link, alt: "Photo of recipe #{recipe.name}", class: "dish-image recipe-card" %>
-    <% end %>
-  </div>
-            <!-- ADD "=" to line below to display recipe name + link -->
-      <% link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
+    <%= render "recipes/info_card", recipe: recipe %>
   <% end %>
+</div>
+
+<!-- Info card that pops up when hovering -->
+<div class="info-card">
+  <%#= image_tag recipe.photo_link, alt: "Photo of #{recipe.name}", class: "dish-image recipe-card" %>
+    <%#= link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
+  <img src="https://spoonacular.com/recipeImages/567516-556x370.jpg" alt="Image placeholder" class="info-card-img">
+
+  <div class="info-content">
+    <h4>Recipe Name:</h4>
+    <ul>Ingredients:
+      <li>Ingredient1</li>
+      <li>Ingredient2</li>
+      <li>Ingredient3</li>
+      <li>Ingredient4</li>
+      <li>Ingredient5</li>
+    </ul>
+  </div>
+
+  <div class="info-content">
+    <h5>Prep Time:</h5>
+    <p>X mins</p>
+  </div>
+
 </div>
