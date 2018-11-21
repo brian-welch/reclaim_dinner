@@ -1,6 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'nokogiri'
+require_relative 'users/user_seed'
 require_relative 'methods/seed_methods'
 
 ## clears terminal window
@@ -60,7 +61,7 @@ Dir.glob("db/json_files/*.json").each do |json_file|
   recipe_file = JSON.parse(File.read("#{json_file}"))
   recipe_file_array = recipe_file['body']["recipes"]
 
-  puts "\n\nProcessing #{json_file}\n"
+  puts "\n\nProcessing recipe #{json_file}\n"
   recipe_file_array.each do |recipe_array|
     # Will NOT add recipes whose recipe steps aren't incremented
     unless recipe_array["analyzedInstructions"].size.zero?
@@ -139,7 +140,36 @@ Dir.glob("db/json_files/*.json").each do |json_file|
 # this 'end' ends the iteration through all json files in the directory
 end
 
-puts "\nDatabase Created!"
+puts "\nRecipes created."
+sleep 1
+
+puts "\nDestroying the database!!"
+sleep 3
+
+
+users.each do |user|
+  User.create!(
+    first_name: user.first_name,
+    last_name: user.last_name,
+    email: user.email,
+    password: user.password,
+    user_name: user.user_name,
+    birthday: user.birthday,
+    street_address: user.street_address,
+    city: user.city,
+    county: user.county,
+    state: usere.state,
+    post_code: user.post_code,
+    country: user.country,
+    facebook_username: user.facebook_username,
+    instagram_username: user.instagram_username,
+    pinterest_username: user.pinterest_username,
+    children: false,
+    time_preference: 60
+    )
+end
+
+puts "\nUsers Created!"
 
 
 
