@@ -1,0 +1,20 @@
+.recipes-flexbox {
+  display: flex;
+}
+
+.dish-image-wrapper {
+  height: 75vh;
+  flex-grow: 1;
+  width: 100vw;
+}
+
+.recipe-card {
+  max-height: 100vh;
+}
+
+.dish-image {
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  padding: 2px 0px;
+}
