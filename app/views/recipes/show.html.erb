@@ -1,26 +1,80 @@
-<h1><%= @recipe.name %></h1>
-<div class="col-xs-12 col-sm-6 col-md-5">
-  <div class="show-dish-photo-outer">
-    <div class="show-dish-photo-inner">
-      <%= @recipe.photo %>
-    </div>
-  </div>
-  <div class="show-icons-tools-outer">
-    <div class="show-icons-tools-inner">
-      <!-- icons or tools - gui things -->
-    </div>
-  </div>
-</div>
-<div class="col-xs-12 col-sm-6 col-md-7">
-  <div class="show-dish-details-outer">
-    <div class="show-dish-details-inner">
-      <!-- preparation and other details -->
 
+<h1><%= @recipe.name %></h1>
+<hr>
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-6">
+
+    <div class="show-recipe-photo-outer">
+      <div class="show-recipe-photo-inner">
+        <%= image_tag  @recipe.photo_link, alt: "Image of #{@recipe.name}"%>
+      </div>
+      <div class="show-recipe-recipe-ref">
+        <div>recipe id: <%= @recipe.id %></div>
+        <div>credit: <%= @recipe.source %></div>
+      </div>
     </div>
+
+    <div class="show-icons-tools-outer">
+      <div class="show-icons-tools-inner">
+        <!-- icons or tools - gui things -->
+        <%= image_tag 'recipes/icons/dairy-free-hover.svg', height: "50" %>
+        <%= image_tag 'recipes/icons/gluten-free-hover.svg', height: "50" %>
+        <%= image_tag 'recipes/icons/vegan-hover.svg', height: "50" %>
+        <%= image_tag 'recipes/icons/vegetarian-hover.svg', height: "50" %>
+      </div>
+    </div>
+
   </div>
-  <div class="show-dish-instructions-outer">
-    <div class="show-dish-instructions-inner">
-      <!-- Recipe preparation instrucitons -->
+  <div class="col-xs-12 col-sm-6 col-md-6">
+    <div class="show-recipe-details-outer">
+      <div class="show-recipe-details-inner">
+        <!-- preparation and other details -->
+        <h5>Details:</h5>
+        <ul>
+          <li>Prep Time: <%= @recipe.prep_time %> min.</li>
+          <li>Cook Time: <%= @recipe.cook_time %> min.</li>
+        </ul>
+
+        <hr>
+        <h5>Ingredients:</h5>
+        <ul>
+          <li>Lorem ipsum dolor sit</li>
+          <li>Ius ea dicat zril</li>
+          <li>Docendi vituperata dissentiet ea</li>
+          <li>Eleifend vituperata scripserit vis</li>
+          <li>Veniam vituperatoribus vim ad</li>
+          <li>Eu choro clita pr</li>
+          <li>Te habeo zril scripta</li>
+          <li>Voluptua reformidans in sea</li>
+          <li>Magna ornatus dolorum an</li>
+          <li>Latine impedit reprehendunt eu</li>
+        </ul>
+
+      </div>
     </div>
   </div>
 </div>
+<hr>
+<div class="row">
+  <div class="col-xs-12 col-sm-3">
+        <h5 align="center">Other.....Stuff?</h5>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <div class="show-recipe-instructions-outer">
+      <div class="show-recipe-instructions-inner">
+        <!-- Recipe preparation instrucitons -->
+        <h5>Instructions:</h5>
+        <ul>
+          <% @recipe.instructions.each do |step| %>
+          <li><%= step %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-3">
+        <h5 align="center">Rating, social media, reviews?</h5>
+  </div>
+</div>
+
+<% #raise %>
