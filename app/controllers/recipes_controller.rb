@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show]
 
   def show
-
+    @recipe_ingredients = Recipe.joins(:recipe_ingredients).where("recipe_ingredients.recipe_id = #{params[:id]}")
   end
 
   private
