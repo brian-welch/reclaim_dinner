@@ -9,7 +9,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_ingredients = Recipe.joins(:recipe_ingredients).where("recipe_ingredients.recipe_id = #{params[:id]}")
+
+    @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:id])
   end
 
   private
