@@ -3,9 +3,10 @@
 }
 
 .dish-image-wrapper {
-  height: 75vh;
+  height: 85vh;
   flex-grow: 1;
   width: 100vw;
+  padding-right: 5px;
 }
 
 .recipe-card {
@@ -16,5 +17,4 @@
   background-position: center;
   background-size: cover;
   height: 100%;
-  padding: 2px 0px;
 }
