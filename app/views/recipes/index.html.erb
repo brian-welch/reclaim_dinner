@@ -1,10 +1,11 @@
+<% @seven_recipes.each do |recipe| %>
 
-  <div class="col-xs-12 col-md-6">
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
     <div class="card-outer">
       <div class="card-inner"><!-- FLEXBOX -->
 
         <div class="dish-image-container-outer"> <!-- Flex item 1 of 2 fixed -->
-          <div class="cta-splash"><i class="fas fa-star"></i></div>
+          <!-- <div class="cta-splash"><i class="fas fa-star"></i></div> -->
 
           <!--<div class="recipe-control-bar">
             <div class="recipe-control-button"><a href="#">Lock</a></div>
@@ -12,16 +13,20 @@
           </div>-->
           <div class="dish-image-container-inner">
 
-            <a href="#" class=""><!--links to details page-->
-              <img class="dish-image" src="https://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/10/01/tuna-noodle-casserole-ck-x.jpg?itok=aGvmJ42x" alt="photo of Tuna Fish Casserole" height="150">
-            </a>
+            <!-- <a href="#" class=""> -->
+              <%= link_to recipe do -%>
+              <%= image_tag recipe.photo_link, alt: "Photo of recipe #{recipe.name}", height: "150", class: "dish-image" %>
+              <% end -%>
+              <!-- <img class="dish-image" src="<%= recipe.photo_link %>" alt="photo of #{recipe.name}" height="150"> -->
+            <!-- </a> -->
           </div>
         </div>
 
         <div class="recipe-evaluator-block"> <!-- Flex item 2 of 2 flexible -->
-          <a href="#" class=""><!--links to details page-->
+          <%= link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
+          <!-- <a href="#" class="">
             <div class="recipe-name">Tuna Fish Caserole Tuna</div>
-          </a>
+          </a> -->
 
           <div class="add-to-favorites"><i class="far fa-heart" title="Add to Favorites!"></i></div>
 
@@ -61,3 +66,4 @@
       </div>
     </div>
   </div>
+<% end %>

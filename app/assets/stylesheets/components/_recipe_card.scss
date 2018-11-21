@@ -6,7 +6,7 @@
   height: 164px;
   padding: 7px;
   border-radius: 3px;
-  margin: 15px 0;
+  margin: 5px 0;
   position: relative;
 }
 .card-inner {
@@ -57,7 +57,7 @@
   }
   .recipe-graphs-contianer {
     height: 56%;
-    margin: 2% 0;
+    margin: 1% 0;
   }
 }
 .cta-splash {
@@ -130,6 +130,7 @@
   transition: all ease 300ms;
   width: 100%;
   overflow: hidden;
+  margin: 0 0 0 15px;
 }
 .recipe-icon-bar {
   transition: all ease 300ms;
