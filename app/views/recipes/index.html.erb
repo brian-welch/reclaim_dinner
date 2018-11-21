@@ -1,0 +1,69 @@
+<% @seven_recipes.each do |recipe| %>
+
+  <div class="col-xs-12 col-md-10 col-md-offset-1">
+    <div class="card-outer">
+      <div class="card-inner"><!-- FLEXBOX -->
+
+        <div class="dish-image-container-outer"> <!-- Flex item 1 of 2 fixed -->
+          <!-- <div class="cta-splash"><i class="fas fa-star"></i></div> -->
+
+          <!--<div class="recipe-control-bar">
+            <div class="recipe-control-button"><a href="#">Lock</a></div>
+            <div class="recipe-control-button"><a href="#">Next</a></div>
+          </div>-->
+          <div class="dish-image-container-inner">
+
+            <!-- <a href="#" class=""> -->
+              <%= link_to recipe do -%>
+              <%= image_tag recipe.photo_link, alt: "Photo of recipe #{recipe.name}", height: "150", class: "dish-image" %>
+              <% end -%>
+              <!-- <img class="dish-image" src="<%= recipe.photo_link %>" alt="photo of #{recipe.name}" height="150"> -->
+            <!-- </a> -->
+          </div>
+        </div>
+
+        <div class="recipe-evaluator-block"> <!-- Flex item 2 of 2 flexible -->
+          <%= link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
+          <!-- <a href="#" class="">
+            <div class="recipe-name">Tuna Fish Caserole Tuna</div>
+          </a> -->
+
+          <div class="add-to-favorites"><i class="far fa-heart" title="Add to Favorites!"></i></div>
+
+          <div class="recipe-graphs-contianer">
+            <table class="recipe-card-graphs-table">
+              <tr>
+                <td>Time: </td>
+                <td>
+                  <div class="recipe-card-graph" style="background: linear-gradient(90deg, rgba(242, 172, 60, 0.75)75%, rgba(255, 255, 255, 0.75)76% );"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>Difficulty: </td>
+                <td>
+                  <div class="recipe-card-graph" style="background: linear-gradient(90deg, rgba(242, 172, 60, 0.75)33%, rgba(255, 255, 255, 0.75)34% );"></div>
+                </td>
+              </tr>
+              <tr>
+                <td>Ingredients: </td>
+                <td>
+                  <div class="recipe-card-graph" style="background: linear-gradient(90deg, rgba(242, 172, 60, 0.75)66%, rgba(255, 255, 255, 0.75)67% );"></div>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="recipe-category-block">
+            <%= image_tag 'recipes/icons/dairy-free.svg', height: "25" %>
+            <%= image_tag 'recipes/icons/gluten-free.svg', height: "25" %>
+            <%= image_tag 'recipes/icons/nut-free.svg', height: "25" %>
+            <%= image_tag 'recipes/icons/vegan.svg', height: "25" %>
+            <%= image_tag 'recipes/icons/vegetarian.svg', height: "25" %>
+
+            <!--a list pf preset category icons which will be colored or not based upon boolean logic-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
