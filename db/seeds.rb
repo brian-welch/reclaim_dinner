@@ -15,9 +15,10 @@ puts '- ' * 30 + "\n"
 
 # starts goofy 'working' animation
 start_working
+sleep 2
 
 puts "\nDestroying the database!!"
-sleep 3
+sleep 2
 
 Recipe.destroy_all
 RecipeIngredient.destroy_all
@@ -143,8 +144,8 @@ end
 puts "\nRecipes created."
 sleep 1
 
-puts "\nDestroying the database!!"
-sleep 3
+puts "\nCreating users"
+sleep 2
 
 
 users.each do |user|
@@ -171,6 +172,29 @@ end
 
 puts "\nUsers Created!"
 
+
+puts "\nCreating food preferences"
+sleep 2
+food_preferences.each do |preference|
+  FoodPreference.create!(name: preference)
+end
+puts "\nPreferences Created!"
+
+
+puts "\nCreating food allergies"
+sleep 2
+food_allergies.each do |allergy|
+  Allergy.create!(name: allergy)
+end
+puts "\nAllergies Created!"
+
+
+puts "\nCreating special diets"
+sleep 2
+special_diets.each do |diet|
+  SpecialDiet.create!(name: diet)
+end
+puts "\nAllergies Created!"
 
 
 # kills goofy 'working' animation
