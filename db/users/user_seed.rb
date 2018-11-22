@@ -55,3 +55,7 @@ users = [
     time_preference: 60,
   }
 ]
+
+food_preferences = %w[vegetarian vegan pork beef chicken fish shell-fish]
+food_allergies = %w[peanut lactose gluten shell-fish]
+special_diets = %w[atkins raw weight-watchers zone]
