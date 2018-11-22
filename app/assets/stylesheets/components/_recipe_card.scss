@@ -10,7 +10,7 @@
   position: relative;
 }
 .card-inner {
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   display: flex;
   justify-content: space-between;
   // align-items: flex-end;
@@ -21,7 +21,7 @@
   // Flex item left, fixed
   flex: 0 0 150px;
   overflow: hidden;
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   text-align: center;
   border-radius: 2px;
   box-shadow: 0 0 1px 1px rgba(76, 175, 178, 1);
@@ -30,14 +30,14 @@
   // Flex item left, fixed
   flex: 0 0 150px;
   overflow: hidden;
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   text-align: center;
   border-radius: 2px;
 }
 
 .recipe-control-bar {
   z-index: 100;
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   background-color: rgba(255, 255, 255, 0.9);
   display: flex;
   justify-content: space-around;
@@ -50,7 +50,7 @@
 .recipe-evaluator-block {
   // Flex item right, malible
   flex: 1 0 auto;
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   div {
     padding-left: 10px;
     height: 20%;
@@ -61,7 +61,7 @@
   }
 }
 .cta-splash {
-  transition: all ease 300ms;
+  // transition: all ease 300ms;
   background-color: rgba(0, 0, 0, 0.0);
   position: absolute;
   height: 35px;
@@ -148,7 +148,7 @@
 }
 .dish-image {
   /* image zoom logic */
-  transition: all ease 10000ms;
+  // transition: all ease 10000ms;
 }
 .recipe-link {
   transition: all ease 300ms;
@@ -174,7 +174,7 @@
 .dish-image-container:hover {
 }
 .dish-image:hover {
-  transform: scale(1.75);
+  // transform: scale(1.75);
 }
 .recipe-link:hover {
 }
