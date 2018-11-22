@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'profiles#index', as: 'profile'
   post 'profile', to: 'profiles#update'
+  # post 'preferences', to: 'preferences#update'
+  # resource :preferences, only: :update
 
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'
   post 'dashboard', to: 'dashboards#update'

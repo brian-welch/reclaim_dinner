@@ -7,7 +7,18 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    personalizer = ""
+    model = "#{params[:model]}".constantize
+    join_model = "#{params[:model]}User".constantize
+    field_id = "#{params[:model].downcase}_id"
+    # raise
+    if params[:exist] == "true"
+      # raise
+      join_model.where(user: current_user, field_id => model.find_by_name(params[:name]).id).each(&:destroy)
+    else
+      join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id)
+    end
+
+    redirect_to profile_path
   end
 
   private
