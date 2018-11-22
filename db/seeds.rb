@@ -1,7 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'nokogiri'
-require_relative 'users/user_seed'
+require_relative 'users/user_seed.rb'
 require_relative 'methods/seed_methods'
 
 ## clears terminal window
@@ -29,32 +29,26 @@ MetricMeasure.destroy_all
 ImperialMeasure.destroy_all
 Category.destroy_all
 
+User.destroy_all
 
-# FoodPreference.destroy_all
-# FoodPreferenceUser.destroy_all
+FoodPreferenceUser.destroy_all
+AllergyUser.destroy_all
+SpecialDietUser.destroy_all
+FoodPreference.destroy_all
+Allergy.destroy_all
+SpecialDiet.destroy_all
 
-# Allergy.destroy_all
-# AllergyUser.destroy_all
-
-# SpecialDiet.destroy_all
-# SpecialDietUser.destroy_all
-
-# UserRecipe.destroy_all
-# RecipeRating.destroy_all
-
-# User.destroy_all
-
-# puts " >> Entire database deleted!\n"
-# puts '- ' * 30 + "\n\n"
+UserRecipe.destroy_all
+RecipeRating.destroy_all
 
 
 puts "\nDatabase destroyed."
 puts '- ' * 30 + "\n"
-sleep 2
+
 
 
 puts "\nPreparing to populate the database....."
-sleep 1
+sleep 2
 
 # Iterates through every file in json_files directory
 Dir.glob("db/json_files/*.json").each do |json_file|
@@ -147,24 +141,23 @@ sleep 1
 puts "\nCreating users"
 sleep 2
 
-
 users.each do |user|
   User.create!(
-    first_name: user.first_name,
-    last_name: user.last_name,
-    email: user.email,
-    password: user.password,
-    user_name: user.user_name,
-    birthday: user.birthday,
-    street_address: user.street_address,
-    city: user.city,
-    county: user.county,
-    state: usere.state,
-    post_code: user.post_code,
-    country: user.country,
-    facebook_username: user.facebook_username,
-    instagram_username: user.instagram_username,
-    pinterest_username: user.pinterest_username,
+    first_name: user[:first_name],
+    last_name: user[:last_name],
+    email: user[:email],
+    password: user[:password],
+    user_name: user[:user_name],
+    birthday: user[:birthday],
+    street_address: user[:street_address],
+    city: user[:city],
+    county: user[:county],
+    state: user[:state],
+    post_code: user[:post_code],
+    country: user[:country],
+    facebook_username: user[:facebook_username],
+    instagram_username: user[:instagram_username],
+    pinterest_username: user[:pinterest_username],
     children: false,
     time_preference: 60
     )

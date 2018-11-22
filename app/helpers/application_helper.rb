@@ -4,7 +4,7 @@ module ApplicationHelper
     content_tag(:title, @title || "Reclaim Dinner: Making your dinner planning easier and faster")
   end
 
-  def toggle_test(args = {})
+  def toggle_form(args = {})
     return "<!--<form class='profile-toggle-form ' action='\#' method=' name='>--> \
               <span>#{args[:type].capitalize}: <\/span><span class='profile-toggle-form-off'>off<\/span>
               <div class='toggle-button-frame'> \
