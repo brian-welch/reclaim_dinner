@@ -1,14 +1,13 @@
 class ProfilesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: [:show, :update]
   before_action :set_user, :set_preferences, :set_allergies, :set_diets, :set_user_preferences, :set_user_allergies, :set_user_diets
 
   def show
-  end
 
-  def edit
   end
 
   def update
+
   end
 
   private
@@ -30,15 +29,16 @@ class ProfilesController < ApplicationController
   end
 
   def set_user_preferences
-    @user_preferences = current_user
+    # raise
+    @user_preferences = FoodPreferenceUser.where(user_id: current_user)
   end
 
   def set_user_allergies
-    @user_allergies = current_user
+    @user_allergies = AllergyUser.where(user_id: current_user)
   end
 
   def set_user_diets
-    @user_diets = current_user
+    @user_diets = SpecialDietUser.where(user_id: current_user)
   end
 
 end
