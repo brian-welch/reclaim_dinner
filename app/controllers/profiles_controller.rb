@@ -2,12 +2,12 @@ class ProfilesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :update]
   before_action :set_user, :set_preferences, :set_allergies, :set_diets, :set_user_preferences, :set_user_allergies, :set_user_diets
 
-  def show
+  def index
 
   end
 
   def update
-
+    personalizer = ""
   end
 
   private

@@ -4,10 +4,10 @@ module ApplicationHelper
     content_tag(:title, @title || "Reclaim Dinner: Making your dinner planning easier and faster")
   end
 
-  def toggle_form(args = {})
+  def profile_form(args = {})
     class_insert = "turn-on-toggle" if args[:value]
     value = !args[:value]
-    return "<!--<form class='profile-toggle-form ' action='\#' method=' name='>--> \
+    return "<!--<form class='profile-toggle-form ' action='' method='' name=''>--> \
               <td class='profile-personalization-parameter-column'>#{args[:type].capitalize}: <\/td><td><span class='profile-toggle-form-off'>off<\/span>
               <div class='toggle-button-frame '> \
                 <input type='hidden' value='#{args[:value]}' name='#{args[:type]}'> \

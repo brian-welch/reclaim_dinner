@@ -5,7 +5,11 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show]
   resources :user_recipes, only: [:create, :edit, :update]
-  resources :dashboards, only: [:show, :edit, :update]
-  resources :profiles, only: [:show, :edit, :update]
+
+  get 'profile', to: 'profiles#index', as: 'profile'
+  post 'profile', to: 'profiles#update'
+
+  get 'dashboard', to: 'dashboards#index', as: 'dashboard'
+  post 'dashboard', to: 'dashboards#update'
 
 end
