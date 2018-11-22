@@ -230,20 +230,35 @@
           </div>
         </div>
         <div class="show-profile-user-personalization-block">
-          <div class="show-profile-allergies-box">
+          <div class="show-profile-preferences-box">
             <div class="">
-              <h6>Food allergies</h6>
-              <ul class="show-profile-alergy-preference-list">
-
-                <li style="font-weight: 500;"><%= toggle_form(type: 'lactose', value: true, user_id: current_user ).html_safe %></li>
-              </ul>
-
-
-
+              <h6>Food Preference</h6>
+              <table class="show-profile-alergy-preference-list">
+                <% @all_preferences.each do |preference| %>
+                <tr style="font-weight: 500;"><%= toggle_form(type: "#{preference.name}", value: true, user_id: current_user ).html_safe %></tr>
+                <% end %>
+              </table>
             </div>
           </div>
           <div class="show-profile-preferences-box">
-
+            <div class="">
+              <h6>Food Alergies</h6>
+              <table class="show-profile-alergy-preference-list">
+                <% @all_allergies.each do |allergy| %>
+                <tr style="font-weight: 500;"><%= toggle_form(type: "#{allergy.name}", value: true, user_id: current_user ).html_safe %></tr>
+                <% end %>
+              </table>
+            </div>
+          </div>
+          <div class="show-profile-preferences-box">
+            <div class="">
+              <h6>Special Diets</h6>
+              <table class="show-profile-alergy-preference-list">
+                <% @all_diets.each do |diet| %>
+                <tr style="font-weight: 500;"><%= toggle_form(type: "#{diet.name}", value: true, user_id: current_user ).html_safe %></tr>
+                <% end %>
+              </table>
+            </div>
           </div>
 
         </div>
