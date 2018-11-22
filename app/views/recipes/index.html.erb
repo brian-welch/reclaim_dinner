@@ -5,13 +5,14 @@
 </div>
 
 <!-- Info card that pops up when hovering -->
-<div class="info-card">
+<div class="info-card slideup">
   <%#= image_tag recipe.photo_link, alt: "Photo of #{recipe.name}", class: "dish-image recipe-card" %>
     <%#= link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
   <img src="https://spoonacular.com/recipeImages/567516-556x370.jpg" alt="Image placeholder" class="info-card-img">
 
   <div class="info-content-recipe-name">
     <h4>(Recipe Name)</h4>
+    <p></p>
   </div>
 
   <div class="info-content-ingredient-list">
