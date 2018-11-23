@@ -3,7 +3,6 @@ require 'open-uri'
 require 'nokogiri'
 require_relative 'users/user_seed.rb'
 
-
 emoji_array = %w[🍏 🍎 🍐 🍊 🍋 🍌 🍉 🍇 🍓 🍈 🍒 🍑 🍍 🥭 🥥 🥝 🍅 🍆 🥑 🥦 🥒 🥬 🌶 🌽 🥕 🥔 🍠 🥐 🍞 🥖 🥨 🥯 🧀 🥚 🍳 🥞 🥓 🥩 🍗 🍖 🌭 🍔 🍟 🍕 🥪 🥙 🌮 🌯 🥗 🥘 🥫 🍝 🍜 🍲 🍛 🍣 🍱 🥟 🍤 🍙 🍚 🍘 🍥 🥮 🥠 🍢 🍡 🍧 🍨 🍦 🥧 🍰 🎂 🍮 🍭 🍬 🍫 🍿 🧂 🍩 🍪 🌰 🥜 🍯 🥛 🍼 ☕️ 🍵 🥤 🍶 🍺 🍻 🥂 🍷 🥃 🍸 🍹 🍾 🥄 🍴 🍽 🥣 🥡]
 
 wave = Enumerator.new do |e|
@@ -17,7 +16,6 @@ progress = Thread.new do
     sleep(0.3)
   end
 end
-
 
 ## clears terminal window
 system 'clear'
@@ -60,6 +58,7 @@ RecipeRating.destroy_all
 
 puts "\nDatabase destroyed."
 puts '- ' * 30 + "\n"
+
 
 
 # http://brianwelch.se/media/json_files/recipe_remote_02.json

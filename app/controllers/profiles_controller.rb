@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
+
     model = "#{params[:model].tr('_','')}".constantize
     join_model = "#{params[:model].tr('_','')}User".constantize
     field_id = "#{params[:model].downcase}_id"
@@ -14,10 +15,10 @@ class ProfilesController < ApplicationController
     if params[:exist] == "true"
       join_model.where(user: current_user, field_id => model.find_by_name(params[:name]).id).each(&:destroy)
     else
-      join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id)
-      # respond_to do |format|
-      #   format.html { redirect_to profile_path }
-      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
+      join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id).save
+      #   respond_to do |format|
+      #     format.html { redirect_to profile_path }
+      #     format.js  # <-- will render `app/views/reviews/update(...maybe?).js.erb`
       # end
     end
     redirect_to profile_path
@@ -42,7 +43,6 @@ class ProfilesController < ApplicationController
   end
 
   def set_user_preferences
-    # raise
     @user_preferences = FoodPreferenceUser.where(user_id: current_user)
   end
 
@@ -54,4 +54,7 @@ class ProfilesController < ApplicationController
     @user_diets = SpecialDietUser.where(user_id: current_user)
   end
 
+  def set_favorite_recipes
+    @user_favorites = ""
+  end
 end
