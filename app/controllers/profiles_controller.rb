@@ -7,17 +7,19 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    model = "#{params[:model]}".constantize
-    join_model = "#{params[:model]}User".constantize
+    model = "#{params[:model].tr('_','')}".constantize
+    join_model = "#{params[:model].tr('_','')}User".constantize
     field_id = "#{params[:model].downcase}_id"
-    # raise
+
     if params[:exist] == "true"
-      # raise
       join_model.where(user: current_user, field_id => model.find_by_name(params[:name]).id).each(&:destroy)
     else
       join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id)
+      # respond_to do |format|
+      #   format.html { redirect_to profile_path }
+      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
+      # end
     end
-
     redirect_to profile_path
   end
 

@@ -237,11 +237,13 @@
                 <% @all_preferences.each do |preference| %>
                 <% pref_present = @user_preferences.any? {|object| object.food_preference_id == preference.id} %>
                 <tr style="font-weight: 500;">
-                  <%= profile_form(model: "FoodPreference",
+                  <%= form_tag('/profile') do -%>
+                  <%= profile_form(model: "Food_Preference",
                                    object: preference,
                                    name: "#{preference.name}",
                                    exist: pref_present,
                                    user_id: current_user ).html_safe %>
+                  <% end -%>
                 </tr>
                 <% end %>
               </table>
@@ -273,11 +275,13 @@
                 <% @all_diets.each do |diet| %>
                 <% diet_present = @user_diets.any? {|object| object.special_diet_id == diet.id} %>
                 <tr style="font-weight: 500;">
-                  <%= profile_form(model: "SpecialDiet",
+                  <%= form_tag('/profile') do -%>
+                  <%= profile_form(model: "Special_Diet",
                                    object: diet,
                                    name: "#{diet.name}",
                                    exist: diet_present,
                                    user_id: current_user ).html_safe %>
+                  <% end -%>
                 </tr>
                 <% end %>
               </table>
