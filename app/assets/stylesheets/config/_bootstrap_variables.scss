@@ -88,6 +88,9 @@ $btn-danger-border: lighten($btn-danger-bg, 25%) !default;
 
 // Override other variables below!
 
+// Variable to make sure info card stays on top of footer at all times
+$recipe-card-height: 250px;
+$footer-height: 75px;
 
 
 
