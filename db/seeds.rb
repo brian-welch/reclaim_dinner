@@ -140,38 +140,23 @@ Dir.glob("http://brianwelch.se/media/json_files/*.json").each do |json_file|
                                  metric_measure: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]))
       end
 
-    # This 'end' ends the unless condition which ignores recipes without incrememented instructions steps
-    end
-
-  # This 'end' ends the iteration of 100 recipes or one json file
-  end
-# this 'end' ends the iteration through all json files in the directory
-end
-
-puts "\nRecipes created."
-sleep 1
-
-puts "\nDestroying the database!!"
-sleep 3
-
-
-users.each do |user|
+    # This 'end' ends the unless condition which ignores recipes withousers.each do |user|
   User.create!(
-    first_name: user.first_name,
-    last_name: user.last_name,
-    email: user.email,
-    password: user.password,
-    user_name: user.user_name,
-    birthday: user.birthday,
-    street_address: user.street_address,
-    city: user.city,
-    county: user.county,
-    state: usere.state,
-    post_code: user.post_code,
-    country: user.country,
-    facebook_username: user.facebook_username,
-    instagram_username: user.instagram_username,
-    pinterest_username: user.pinterest_username,
+    first_name: user[:first_name],
+    last_name: user[:last_name],
+    email: user[:email],
+    password: user[:password],
+    user_name: user[:user_name],
+    birthday: user[:birthday],
+    street_address: user[:street_address],
+    city: user[:city],
+    county: user[:county],
+    state: user[:state],
+    post_code: user[:post_code],
+    country: user[:country],
+    facebook_username: user[:facebook_username],
+    instagram_username: user[:instagram_username],
+    pinterest_username: user[:pinterest_username],
     children: false,
     time_preference: 60
     )
@@ -179,6 +164,29 @@ end
 
 puts "\nUsers Created!"
 
+
+puts "\nCreating food preferences"
+sleep 2
+food_preferences.each do |preference|
+  FoodPreference.create!(name: preference)
+end
+puts "\nPreferences Created!"
+
+
+puts "\nCreating food allergies"
+sleep 2
+food_allergies.each do |allergy|
+  Allergy.create!(name: allergy)
+end
+puts "\nAllergies Created!"
+
+
+puts "\nCreating special diets"
+sleep 2
+special_diets.each do |diet|
+  SpecialDiet.create!(name: diet)
+end
+puts "\nAllergies Created!"
 
 
 # kills goofy 'working' animation
