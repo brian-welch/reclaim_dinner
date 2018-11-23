@@ -1,4 +1,6 @@
 .footer-outer {
+  position: relative;
+  z-index: 100;
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.2)0%, rgba(0, 0, 0, 0.2)100%);
   background-color: $rd-brand-color-dark;
   color: #f0f0f0;
