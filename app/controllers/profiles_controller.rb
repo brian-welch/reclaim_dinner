@@ -43,7 +43,6 @@ class ProfilesController < ApplicationController
   end
 
   def set_user_preferences
-    # raise
     @user_preferences = FoodPreferenceUser.where(user_id: current_user)
   end
 
@@ -55,4 +54,7 @@ class ProfilesController < ApplicationController
     @user_diets = SpecialDietUser.where(user_id: current_user)
   end
 
+  def set_favorite_recipes
+    @user_favorites = ""
+  end
 end
