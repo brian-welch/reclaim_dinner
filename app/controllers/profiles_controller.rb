@@ -8,25 +8,6 @@ class ProfilesController < ApplicationController
 
   def update
 
-    # class ReviewsController < ApplicationController
-    #   def create
-    #     # [...]
-    #     if @review.save
-    #       respond_to do |format|
-    #         format.html { redirect_to restaurant_path(@restaurant) }
-    #         format.js  # <-- will render `app/views/reviews/create.js.erb`
-    #       end
-    #     else
-    #       respond_to do |format|
-    #         format.html { render 'restaurants/show' }
-    #         format.js  # <-- idem
-    #       end
-    #     end
-    #   end
-
-    #   # [...]
-    # end
-
     model = "#{params[:model].tr('_','')}".constantize
     join_model = "#{params[:model].tr('_','')}User".constantize
     field_id = "#{params[:model].downcase}_id"
