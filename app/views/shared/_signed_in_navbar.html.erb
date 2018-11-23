@@ -10,7 +10,7 @@
         <i class="fas fa-shopping-basket"></i>
       <% end %>
       <!-- dashboard -->
-      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do%>
+      <%= link_to profile_path, class: "navbar-rd-item navbar-rd-link" do%>
         <i class="fas fa-user"></i>
       <% end %>
     </div>
@@ -22,11 +22,9 @@
       <div class="dropdown-toggle navbar-rd-item navbar-rd-link" data-toggle="dropdown">
           <i class="fas fa-bars"></i>
       </div>
-      <!-- temp. replacement for above until you have a user_photo -->
-      <!-- button / burger -->
 
-      <!-- drobdown -->
       <ul class="dropdown-menu dropdown-menu-right" style="right: 30px;">
+
 
           <li>
             <%= link_to "#" do %>
