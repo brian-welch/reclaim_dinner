@@ -1,0 +1,40 @@
+<span>DESKTOP</span>
+<!-- Links when logged in -->
+<%= link_to "Weekly Meal Planner", "#", class: "navbar-reclaim_dinner-item navbar-reclaim_dinner-link" %>
+<%= link_to "My Grocery List", "#", class: "navbar-reclaim_dinner-item navbar-reclaim_dinner-link" %>
+
+<!-- Avatar with dropdown menu -->
+<!-- <div class="navbar-reclaim_dinner-item"> -->
+  <div class="dropdown">
+    <%#= image_tag user_photo, class: "avatar dropdown-toggle", id: "navbar-reclaim_dinner-menu", "data-toggle" => "dropdown" %>
+    <!-- temp. replacement for above -->
+    <div id="navbar-reclaim_dinner-menu" class="avatar dropdown-toggle" data-toggle="dropdown">
+      <img src="https://via.placeholder.com/25">
+    </div>
+    <ul class="dropdown-menu dropdown-menu-right navbar-reclaim_dinner-dropdown-menu">
+      <li>
+        <%= link_to dashboard_path do %>
+          <i class="fa fa-user"></i> <%= t(".dashboard", default: "My Dashboard") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#" do %>
+          <i class="fas fa-envelope"></i>  <%= t(".messages", default: "Messages") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to "#" do %>
+          <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+        <% end %>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">One more separated link</a></li>
+      </li>
+    </ul>
+  </div>
