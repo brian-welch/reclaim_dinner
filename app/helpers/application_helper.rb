@@ -19,11 +19,4 @@ module ApplicationHelper
               </div><span class='profile-toggle-form-on'>on<\/span> \
               <\/td>"
   end
-
-
-
-
-
 end
-
-
