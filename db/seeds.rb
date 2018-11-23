@@ -55,8 +55,16 @@ sleep 2
 puts "\nPreparing to populate the database....."
 sleep 1
 
+
+# http://brianwelch.se/media/
+
+# url = 'https://api.github.com/users/ssaunier'
+# user_serialized = open(url).read
+# user = JSON.parse(user_serialized)
+
+
 # Iterates through every file in json_files directory
-Dir.glob("db/json_files/*.json").each do |json_file|
+Dir.glob("http://brianwelch.se/media/json_files/*.json").each do |json_file|
 
   recipe_file = JSON.parse(File.read("#{json_file}"))
   recipe_file_array = recipe_file['body']["recipes"]
