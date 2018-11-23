@@ -1,7 +1,7 @@
 require 'json'
 require 'open-uri'
 require 'nokogiri'
-require_relative 'users/user_seed'
+require_relative 'users/user_seed.rb'
 require_relative 'methods/seed_methods'
 
 ## clears terminal window
@@ -15,9 +15,10 @@ puts '- ' * 30 + "\n"
 
 # starts goofy 'working' animation
 start_working
+sleep 2
 
 puts "\nDestroying the database!!"
-sleep 3
+sleep 2
 
 Recipe.destroy_all
 RecipeIngredient.destroy_all
@@ -28,43 +29,29 @@ MetricMeasure.destroy_all
 ImperialMeasure.destroy_all
 Category.destroy_all
 
+User.destroy_all
 
-# FoodPreference.destroy_all
-# FoodPreferenceUser.destroy_all
+FoodPreferenceUser.destroy_all
+AllergyUser.destroy_all
+SpecialDietUser.destroy_all
+FoodPreference.destroy_all
+Allergy.destroy_all
+SpecialDiet.destroy_all
 
-# Allergy.destroy_all
-# AllergyUser.destroy_all
-
-# SpecialDiet.destroy_all
-# SpecialDietUser.destroy_all
-
-# UserRecipe.destroy_all
-# RecipeRating.destroy_all
-
-# User.destroy_all
-
-# puts " >> Entire database deleted!\n"
-# puts '- ' * 30 + "\n\n"
+UserRecipe.destroy_all
+RecipeRating.destroy_all
 
 
 puts "\nDatabase destroyed."
 puts '- ' * 30 + "\n"
-sleep 2
+
 
 
 puts "\nPreparing to populate the database....."
-sleep 1
-
-
-# http://brianwelch.se/media/
-
-# url = 'https://api.github.com/users/ssaunier'
-# user_serialized = open(url).read
-# user = JSON.parse(user_serialized)
-
+sleep 2
 
 # Iterates through every file in json_files directory
-Dir.glob("http://brianwelch.se/media/json_files/*.json").each do |json_file|
+Dir.glob("db/json_files/*.json").each do |json_file|
 
   recipe_file = JSON.parse(File.read("#{json_file}"))
   recipe_file_array = recipe_file['body']["recipes"]
@@ -140,7 +127,21 @@ Dir.glob("http://brianwelch.se/media/json_files/*.json").each do |json_file|
                                  metric_measure: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]))
       end
 
-    # This 'end' ends the unless condition which ignores recipes withousers.each do |user|
+    # This 'end' ends the unless condition which ignores recipes without incrememented instructions steps
+    end
+
+  # This 'end' ends the iteration of 100 recipes or one json file
+  end
+# this 'end' ends the iteration through all json files in the directory
+end
+
+puts "\nRecipes created."
+sleep 1
+
+puts "\nCreating users"
+sleep 2
+
+users.each do |user|
   User.create!(
     first_name: user[:first_name],
     last_name: user[:last_name],
