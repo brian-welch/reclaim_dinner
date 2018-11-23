@@ -1,9 +1,0 @@
-<!-- <span>MOBILE</span> -->
-<!-- Links when logged in -->
-<div class="signed-in-mobile-navbar">
-  <%= link_to "Weekly Meal Planner", "#", class: "navbar-reclaim_dinner-item navbar-reclaim_dinner-link" %>
-  <%= link_to "My Grocery List", "#", class: "navbar-reclaim_dinner-item navbar-reclaim_dinner-link" %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-  <% end %>
-</div>
