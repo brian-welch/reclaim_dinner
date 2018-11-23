@@ -5,6 +5,7 @@
   background-color: $rd-brand-color-dark;
   color: #f0f0f0;
   padding: 10px;
+  height: 75px;
 }
 
 .footer-cell {
@@ -22,10 +23,52 @@
   }
 }
 
-.footer-middle-column-list {
-  padding: 0;
-  list-style: none;
-  li > a {
-    color: white !important;
-  }
+.footer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.2)0%, rgba(0, 0, 0, 0.2)100%);
+  background: $rd-brand-color-dark;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  // padding: 10px;
+  color: #f0f0f0;
 }
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  padding-left: 100px;
+}
+
+.footer-links a {
+  color: #f0f0f0;
+  // opacity: 0.5;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 0px 20px;
+}
+
+.footer-links a:hover {
+  // opacity: 1;
+  // color: #005154;
+  font-size: 30px;
+}
+
+.footer-copyright {
+  padding-right: 100px;
+}
+
+// .footer-middle-column-list {
+//   padding: 0;
+//   list-style: none;
+//   li > a {
+//     color: white !important;
+//   }
+// }
+
+// .footer-outer {
+//   background: linear-gradient(90deg, rgba(255, 255, 255, 0.2)0%, rgba(0, 0, 0, 0.2)100%);
+//   background-color: $rd-brand-color-dark;
+//   color: #f0f0f0;
+//   padding: 10px;
+// }

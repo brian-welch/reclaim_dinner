@@ -5,21 +5,18 @@
 
 </div>
 
-
-<% #raise %>
-
-
 <% @seven_recipes.each do |recipe|
     ingredients = RecipeIngredient.where(recipe_id: recipe.id)
-    id = recipe.id
     photo = recipe.photo_link
     link = recipe_path(recipe)
     ingredients = ingredients
     prep_time = recipe.prep_time
     cook_time = recipe.cook_time
-    recipe_name = recipe.name %>
+    recipe_name = recipe.name
+    id = recipe.id %>
 
-  <div id="<%= id %>" class="recipe-detail-block-outer"><!-- setting total size of card -->
+  <!-- setting total size of card -->
+  <div id="info_card-<%= id %>" class="recipe-detail-block-outer"> <!-- id=“info_card-<%= id %>” -->
 
     <div class="recipe-detail-block-inner"><!-- flexbox -->
 
@@ -48,7 +45,3 @@
     </div>
   </div>
 <% end %>
-
-
-
-
