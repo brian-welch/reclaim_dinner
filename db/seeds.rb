@@ -29,10 +29,12 @@ puts '*' * 23
 puts '- ' * 30 + "\n"
 
 # starts goofy 'working' animation
-# start_working
-# sleep 2
+
+
 
 puts "\nDestroying the database!!"
+sleep 2
+
 
 Recipe.destroy_all
 RecipeIngredient.destroy_all
@@ -153,6 +155,7 @@ recipe_file_array.each do |recipe_array|
 end
 
 
+
 puts "\nRecipes created."
 sleep 2
 
@@ -205,9 +208,11 @@ sleep 2
 special_diets.each do |diet|
   SpecialDiet.create!(name: diet)
 end
+
 puts "\nAllergies Created!\n"
 puts '- ' * 30 + "\n"
 puts '*' * 23
 puts ' Seeding Completed'
 puts '*' * 23
+
 
