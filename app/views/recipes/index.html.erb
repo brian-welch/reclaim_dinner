@@ -4,8 +4,50 @@
   <% end %>
 </div>
 
+
+
+<div class="recipe-detail-block-outer"><!-- setting total size of card -->
+  <div class="recipe-detail-block-inner"><!-- flexbox -->
+    <div class="recipe-detail-photo-box"> <!-- left flexbox item -->
+      <img src="https://via.placeholder.com/240" alt="">
+    </div>
+    <div class="recipe-detail-info-box"><!-- right flexbox item and flexbox itself -->
+      <div class="recipe-detail-info-name">
+       <h4>Recipe Name</h4>
+      </div>
+      <div class="recipe-detail-info-specs">
+        <!-- <div class="recipe-detail-info-warnings"></div> for future information -->
+        <div class="recipe-detail-info-ingredients"><!-- flexbox 'flow' to create columns for ingredients if needed -->
+<!--           <ul>
+ -->            <div class="recipe-detail-ingredient-item">one</div>
+            <div class="recipe-detail-ingredient-item">two </div>
+            <div class="recipe-detail-ingredient-item"> three</div>
+            <div class="recipe-detail-ingredient-item">four</div>
+            <div class="recipe-detail-ingredient-item">five</div>
+            <div class="recipe-detail-ingredient-item"> siv</div>
+            <div class="recipe-detail-ingredient-item">seven</div>
+            <div class="recipe-detail-ingredient-item">one</div>
+            <div class="recipe-detail-ingredient-item">two </div>
+            <div class="recipe-detail-ingredient-item"> three</div>
+            <div class="recipe-detail-ingredient-item">four</div>
+            <div class="recipe-detail-ingredient-item">five</div>
+            <div class="recipe-detail-ingredient-item"> siv</div>
+<!--           </ul>
+ -->        </div>
+        <div class="recipe-detail-info-time">
+            <img src="https://via.placeholder.com/150" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <!-- Info card that pops up when hovering -->
-<div class="info-card">
+<!-- <div class="info-card">
   <%#= image_tag recipe.photo_link, alt: "Photo of #{recipe.name}", class: "dish-image recipe-card" %>
     <%#= link_to "#{recipe.name}", recipe_path(recipe), class: "recipe-name" %>
   <img src="https://spoonacular.com/recipeImages/567516-556x370.jpg" alt="Image placeholder" class="info-card-img">
@@ -32,3 +74,4 @@
   </div>
 
 </div>
+ -->

@@ -8,7 +8,9 @@ Bundler.require(*Rails.groups)
 
 module ReclaimDinner
   class Application < Rails::Application
+    # line below added to enable AJAX -  I guess
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
     config.generators do |generate|
           generate.assets false
           generate.helper false
