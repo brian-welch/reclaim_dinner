@@ -11,7 +11,7 @@
 // }
 
 // <% if @review.errors.any? %>
-//   refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: @review %>');
+//   refreshForm('<%= j render profile_path, @user = current_user, review: @review %>');
 // <% else %>
 //   addReview('<%= j render "reviews/show", review: @review %>');
 //   refreshForm('<%= j render "reviews/form", restaurant: @restaurant, review: Review.new %>');
