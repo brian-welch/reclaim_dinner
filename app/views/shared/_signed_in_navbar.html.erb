@@ -1,0 +1,59 @@
+<div class="navbar-rd-right">
+<!-- Links when logged in -->
+<!-- meal_planner -->
+    <div class="hidden-xs hidden-sm">
+      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do %>
+        <i class="far fa-calendar-alt"></i>
+      <% end %>
+      <!-- gocerylist -->
+      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do%>
+        <i class="fas fa-shopping-basket"></i>
+      <% end %>
+      <!-- dashboard -->
+      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do%>
+        <i class="fas fa-user"></i>
+      <% end %>
+    </div>
+
+
+<!-- Avatar with dropdown menu -->
+  <div>
+
+      <div class="dropdown-toggle navbar-rd-item navbar-rd-link" data-toggle="dropdown">
+          <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- drobdown -->
+      <ul class="dropdown-menu dropdown-menu-right">
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="far fa-calendar-alt"></i>
+              <span>My Meal Planner</span>
+            <% end %>
+          </li>
+         <li role="separator" class="divider"></li>
+          <li>
+            <%= link_to root_path do %>
+              <i class="fas fa-star"></i>
+              <span>Favorites</span>
+            <% end %>
+          </li>
+          <li role="separator" class="divider"></li>
+          <li>
+            <%= link_to "#" do %>
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            <% end %>
+          </li>
+          <li role="separator" class="divider hidden-md hidden-lg"></li>
+          <li role="separator" class="divider"></li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Log out</span>
+            <% end %>
+          </li>
+      </ul>
+  </div>
+</div>
