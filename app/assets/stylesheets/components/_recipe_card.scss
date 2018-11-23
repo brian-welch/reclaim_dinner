@@ -5,13 +5,13 @@
   position: absolute;
   // display: none;
   width: 85vw;
-  height: 250px;
+  height: 0;
   background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid #007d82;
   border-radius: 3px 3px 0px 0px;
   margin: 0 auto;
   bottom: 100px;
-  opacity: 1;
+  opacity: 0;
   transition: all 0.5s ease;
   margin-left: calc(50% - 42vw);
 }
