@@ -1,8 +1,10 @@
 function recipeInformationToggle() {
 const recipeImg = document.querySelectorAll(".dish-image");
 
-  $(".dish-image, .recipe-detail-block-outer").hover(function () {
-    $(".recipe-detail-block-outer").toggleClass("open");
+$(".dish-image, .info-card").hover(function () {
+    card_id_number = $(this).attr("id").replace("dish-","");
+    // $(".info-card").toggleClass("open");
+    $("#info_card-".card_id_number).toggleClass("open");
   });
 };
 export { recipeInformationToggle };

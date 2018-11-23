@@ -12,9 +12,11 @@
     ingredients = ingredients
     prep_time = recipe.prep_time
     cook_time = recipe.cook_time
-    recipe_name = recipe.name %>
+    recipe_name = recipe.name
+    id = recipe.id %>
 
-  <div class="recipe-detail-block-outer"><!-- setting total size of card -->
+  <!-- setting total size of card -->
+  <div id=“info_card-<%= id %>” class=“recipe-detail-block-outer”>
 
     <div class="recipe-detail-block-inner"><!-- flexbox -->
 
