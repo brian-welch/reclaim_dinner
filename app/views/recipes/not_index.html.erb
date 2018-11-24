@@ -1,0 +1,59 @@
+<div class="alt-recipe-card-flexbox-container">
+  <% @seven_recipes.each do |recipe| %>
+    <%= render "recipes/alt_info_card", recipe: recipe %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<% @seven_recipes.each do |recipe|
+    ingredients = RecipeIngredient.where(recipe_id: recipe.id)
+    photo = recipe.photo_link
+    link = recipe_path(recipe)
+    ingredients = ingredients
+    prep_time = recipe.prep_time
+    cook_time = recipe.cook_time
+    recipe_name = recipe.name
+    id = recipe.id %>
+
+  <!-- setting total size of card -->
+  <div id="info_card-<%= id %>" class="recipe-detail-block-outer">
+
+    <div class="recipe-detail-block-inner"><!-- flexbox -->
+
+      <div class="recipe-detail-photo-box"> <!-- left flexbox item -->
+        <%= image_tag photo, alt: "Photo of #{recipe_name}", height: "238" %>
+      </div>
+
+      <div class="recipe-detail-info-box"><!-- right flexbox item and flexbox itself -->
+        <div class="recipe-detail-info-name">
+         <h4><%= recipe_name %></h4>
+        </div>
+        <% #raise %>
+        <div class="recipe-detail-info-specs">
+          <!-- <div class="recipe-detail-info-warnings"></div> for future information -->
+          <div class="recipe-detail-info-ingredients"><!-- flexbox 'flow' to create columns for ingredients if needed -->
+            <% ingredients.each_with_index do |_, i| %>
+            <div class="recipe-detail-ingredient-item"> <%= Ingredient.find(ingredients[i].ingredient_id).name %></div>
+            <% end %>
+        </div>
+          <div class="recipe-detail-info-time">
+            <p>Prep Time: <%= prep_time %></p>
+            <p>Cook Time: <%= cook_time %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
