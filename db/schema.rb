@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_20_103218) do
+ActiveRecord::Schema.define(version: 2018_11_24_103730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,22 @@ ActiveRecord::Schema.define(version: 2018_11_20_103218) do
     t.datetime "updated_at", null: false
     t.string "source"
     t.text "instructions", default: [], array: true
+    t.boolean "vegetarian"
+    t.boolean "vegan"
+    t.boolean "glutenFree"
+    t.boolean "dairyFree"
+    t.boolean "beef"
+    t.boolean "chicken"
+    t.boolean "pork"
+    t.boolean "fish"
+    t.boolean "shellfish"
+    t.boolean "ketogenic"
+    t.boolean "peanut"
+    t.boolean "tofu"
+    t.boolean "banana"
+    t.boolean "paleo"
+    t.boolean "primal"
+    t.boolean "egg"
   end
 
   create_table "special_diet_users", force: :cascade do |t|
