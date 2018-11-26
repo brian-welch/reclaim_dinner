@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'design', to: 'pages#design'
 
-  resources :recipes, only: [:index, :show]
+  resources :recipes, only: [:index, :show, :create]
   resources :user_recipes, only: [:create, :edit, :update]
 
   get 'profile', to: 'profiles#index', as: 'profile'

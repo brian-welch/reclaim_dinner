@@ -18,13 +18,15 @@ class Recipe < ApplicationRecord
     ]
     options.select do |option|
       self.public_send(option)
+    end.reject do |option|
+      self.vegan && [:vegetarian, :dairyFree].include?(option)
     end.map do |result|
       result.to_s + '.svg'
     end
   end
 end
 
-# Goes sandwicehd between selevt and map starts line 21. this end followed by map.
+# Goes sandwiched between the 'end' and'.map' on line 21 - goes right in the middle and .map follows this end in here
 # .reject do |option|
 #       self.vegan && [:vegetarian, :dairyFree].include? option
 #     end
