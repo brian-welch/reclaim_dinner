@@ -1,6 +1,8 @@
 
   <div class="index-recipe-shuffle-button">
-    <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
+    <%= form_tag recipes_path do -%>
+      <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
+    <% end -%>
   </div>
 <div class="index-recipe-container">
 

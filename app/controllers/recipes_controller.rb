@@ -15,8 +15,11 @@ class RecipesController < ApplicationController
 
   end
 
-  def recipe_shuffle
-
+  def create
+      @five_recipes = []
+      5.times.with_index { @five_recipes << Recipe.all.sample }
+      @five_recipes
+      redirect_to recipes_path
   end
 
 
