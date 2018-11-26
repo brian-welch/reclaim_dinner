@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_103730) do
+ActiveRecord::Schema.define(version: 2018_11_24_103750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(version: 2018_11_24_103730) do
     t.boolean "paleo"
     t.boolean "primal"
     t.boolean "egg"
+    t.string "source_link"
+    t.boolean "whole30"
   end
 
   create_table "special_diet_users", force: :cascade do |t|

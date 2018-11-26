@@ -1,5 +1,7 @@
 <div class="navbar-rd-right">
 <!-- Links when logged in -->
+  <div class="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
 <!-- meal_planner -->
     <div class="hidden-xs hidden-sm">
       <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do %>
@@ -18,7 +20,6 @@
 
 <!-- Avatar with dropdown menu -->
   <div>
-
       <div class="dropdown-toggle navbar-rd-item navbar-rd-link" data-toggle="dropdown">
           <i class="fas fa-bars"></i>
       </div>

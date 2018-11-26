@@ -16,10 +16,6 @@ class ProfilesController < ApplicationController
       join_model.where(user: current_user, field_id => model.find_by_name(params[:name]).id).each(&:destroy)
     else
       join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id).save
-      #   respond_to do |format|
-      #     format.html { redirect_to profile_path }
-      #     format.js  # <-- will render `app/views/reviews/update(...maybe?).js.erb`
-      # end
     end
     redirect_to profile_path
   end

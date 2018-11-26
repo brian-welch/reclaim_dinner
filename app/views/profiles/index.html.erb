@@ -83,149 +83,6 @@
                   </form>
                 </td>
               </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
-              <tr>
-                <td>Et labitur bonorum disputationi his, quo stet.</td>
-                <td>2018-06-06</td>
-                <td>2018-09-23</td>
-                <td>
-                  <form action="" method="">
-                    <input type="hidden" value="recipe_id">
-                    <button type="submit" class="add-brand-corners"><i class="fas fa-trash-alt"></i></button>
-                  </form>
-                </td>
-              </tr>
             </table>
           </div>
         </div>
@@ -242,7 +99,9 @@
                                    object: preference,
                                    name: "#{preference.name}",
                                    exist: pref_present,
-                                   user_id: current_user ).html_safe %>
+                                   user_id: current_user,
+                                   off: "hide",
+                                   on: "show" ).html_safe %>
                   <% end -%>
                 </tr>
                 <% end %>
@@ -256,12 +115,14 @@
                 <% @all_allergies.each_with_index do |allergy, i| %>
                 <% all_present = @user_allergies.any? {|object| object.allergy_id == allergy.id} %>
                 <tr style="font-weight: 500;">
-                  <%= form_tag profile_path, id: "toggle_2#{i + 1}" do -%>
-                    <%= profile_form(model: "Allergy",
-                                     object: allergy,
-                                     name: "#{allergy.name}",
-                                     exist: all_present,
-                                     user_id: current_user ).html_safe %>
+                  <%= form_tag profile_path, id: "toggle_2#{i + 1}", remote: true  do -%>
+                  <%= profile_form(model: "Allergy",
+                                   object: allergy,
+                                   name: "#{allergy.name}",
+                                   exist: all_present,
+                                   user_id: current_user,
+                                   off: "don't have",
+                                   on: "have").html_safe %>
                   <% end -%>
                 </tr>
                 <% end %>
@@ -280,7 +141,9 @@
                                    object: diet,
                                    name: "#{diet.name}",
                                    exist: diet_present,
-                                   user_id: current_user ).html_safe %>
+                                   user_id: current_user,
+                                   off: "don't filter",
+                                   on: "filter" ).html_safe %>
                   <% end -%>
                 </tr>
                 <% end %>

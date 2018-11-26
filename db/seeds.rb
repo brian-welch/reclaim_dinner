@@ -2,8 +2,9 @@ require 'json'
 require 'open-uri'
 require 'nokogiri'
 require_relative 'users/user_seed.rb'
+require_relative 'recipe_checker/checker.rb'
 
-emoji_array = %w[🍏 🍎 🍐 🍊 🍋 🍌 🍉 🍇 🍓 🍈 🍒 🍑 🍍 🥭 🥥 🥝 🍅 🍆 🥑 🥦 🥒 🥬 🌶 🌽 🥕 🥔 🍠 🥐 🍞 🥖 🥨 🥯 🧀 🥚 🍳 🥞 🥓 🥩 🍗 🍖 🌭 🍔 🍟 🍕 🥪 🥙 🌮 🌯 🥗 🥘 🥫 🍝 🍜 🍲 🍛 🍣 🍱 🥟 🍤 🍙 🍚 🍘 🍥 🥮 🥠 🍢 🍡 🍧 🍨 🍦 🥧 🍰 🎂 🍮 🍭 🍬 🍫 🍿 🧂 🍩 🍪 🌰 🥜 🍯 🥛 🍼 ☕️ 🍵 🥤 🍶 🍺 🍻 🥂 🍷 🥃 🍸 🍹 🍾 🥄 🍴 🍽 🥣 🥡]
+emoji_array = %w[🍏 🍎 🍐 🍊 🍋 🍌 🍉 🍇 🍓 🍈 🍒 🍑 🍍 🥭 🥥 🥝 🍅 🍆 🥑 🥦 🥒 🥬 🌽 🥕 🥔 🍠 🥐 🍞 🥖 🥨 🥯 🧀 🥚 🍳 🥞 🥓 🥩 🍗 🍖 🌭 🍔 🍟 🍕 🥪 🥙 🌮]
 
 wave = Enumerator.new do |e|
   loop do
@@ -64,21 +65,20 @@ puts '- ' * 30 + "\n"
 # http://brianwelch.se/media/json_files/recipe_remote_02.json
 
 puts "\nOpening remote JSON file....."
-
-recipe_file = JSON.parse(open("http://brianwelch.se/media/json_files/recipe_remote_02.json").read)
+# recipe_file = JSON.parse(File.read("db/bulk_gross_recipe_json.json"))
+recipe_file = JSON.parse(open("http://brianwelch.se/media/json_files/recipe_seed_data_v4.json").read)
 recipe_file_array = recipe_file['body']["recipes"]
 
 progress.kill
 
 index = 1
-recipe_file_array.each do |recipe_array|
+recipe_file_array.each_with_index do |recipe_array, i|
 
-  printf("\r    Recipes: %d\/800", index)
+  printf("\r    Processing recipe: %d of 778", index)
 
 
   # Will NOT add recipes whose recipe steps aren't incremented
-  unless recipe_array["analyzedInstructions"].size.zero? && (recipe_array["preparationMinutes"].nil? || recipe_array["preparationMinutes"].size.zero?)
-
+  unless !go_no_go(recipe_array)
     # Creating Ingredient, MetricMeasure & ImperialMeasure Instances
     recipe_array["extendedIngredients"].each_with_index do |ingredient_array, i|
 
@@ -116,12 +116,31 @@ recipe_file_array.each do |recipe_array|
     # NOW instanting Recipe model
     unless !Recipe.find_by_name(recipe_array["title"]).nil?
       Recipe.create!(name: recipe_array["title"],
-                     instructions: analyzedInstructions_array,
                      photo_link: recipe_array["image"],
                      prep_time: recipe_array["preparationMinutes"],
                      cook_time: recipe_array["cookingMinutes"],
                      servings: recipe_array["servings"],
-                     source: recipe_array["creditsText"])
+                     source: recipe_array["creditsText"],
+                     source_link: recipe_array["sourceUrl"],
+                     instructions: analyzedInstructions_array,
+                     vegetarian: recipe_array["vegetarian"],
+                     vegan: recipe_array["vegan"],
+                     glutenFree: recipe_array["glutenFree"],
+                     dairyFree: recipe_array["dairyFree"],
+                     ketogenic: recipe_array["ketogenic"],
+                     paleo: recipe_array["paleo"],
+                     primal: recipe_array["primal"],
+                     whole30: recipe_array["whole30"],
+                     beef: !check_recipe_parameter(recipe_array["extendedIngredients"], "beef").nil?,
+                     chicken: !check_recipe_parameter(recipe_array["extendedIngredients"], "chicken").nil?,
+                     pork: check_pork_parameter(recipe_array["extendedIngredients"]),
+                     fish: !check_recipe_parameter(recipe_array["extendedIngredients"], "fish").nil?,
+                     tofu: !check_recipe_parameter(recipe_array["extendedIngredients"], "tofu").nil?,
+                     banana: !check_recipe_parameter(recipe_array["extendedIngredients"], "banana").nil?,
+                     peanut: !check_recipe_parameter(recipe_array["extendedIngredients"], "peanut").nil?,
+                     shellfish: check_shellfish_parameter(recipe_array["extendedIngredients"]),
+                     egg: !check_recipe_parameter(recipe_array["extendedIngredients"], "egg").nil?,
+                     )
     end
 
     # Creating RecipeCategory join table - Maybe move this outside the recipe array iteration
@@ -138,8 +157,8 @@ recipe_file_array.each do |recipe_array|
 
 
       RecipeIngredient.create!(recipe: Recipe.find_by_name(recipe_array["title"]),
-                               metric_quantity: ingredient_array["measures"]["metric"]["amount"],
-                               imperial_quantity: ingredient_array["measures"]["us"]["amount"],
+                               metric_quantity: ingredient_array["measures"]["metric"]["amount"].class == Integer ? ingredient_array["measures"]["metric"]["amount"].ceil : ingredient_array["measures"]["metric"]["amount"],
+                               imperial_quantity: ingredient_array["measures"]["us"]["amount"].class == Integer ? ingredient_array["measures"]["us"]["amount"].ceil : ingredient_array["measures"]["us"]["amount"],
                                ingredient: Ingredient.find_by_name(ingredient_array["name"]),
                                imperial_measure: ImperialMeasure.find_by_name(ingredient_array["measures"]["us"]["unitShort"]),
                                metric_measure: MetricMeasure.find_by_name(ingredient_array["measures"]["metric"]["unitShort"]))
@@ -207,8 +226,15 @@ sleep 2
 special_diets.each do |diet|
   SpecialDiet.create!(name: diet)
 end
+puts "\nSpecial Diets Created!\n"
 
-puts "\nAllergies Created!\n"
+
+puts "\nCreating Food Preference Defaults"
+sleep 2
+set_default_food_preferences
+puts "\nFood Preference Defaults Created!\n"
+
+
 puts '- ' * 30 + "\n"
 puts '*' * 23
 puts ' Seeding Completed'

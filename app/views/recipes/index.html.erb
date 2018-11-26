@@ -1,5 +1,26 @@
-<style>
 
-</style>
+  <div class="index-recipe-shuffle-button">
+    <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
+  </div>
+<div class="index-recipe-container">
 
-<% # raise %>
+  <div class="index-all-recipe-outer">
+    <% days = %w[monday tuesday wednesday thursday friday] %>
+    <% @five_recipes.each_with_index do |recipe, i| %>
+      <% day = days[i] %>
+      <%= render "recipes/recipe_display_card", recipe: recipe, day: day %>
+    <% end %>
+  </div>
+
+  <div class="index-recipe-name-board add-brand-corners">
+    <h5 id="dynamic-recipe-name"></h5>
+    <h5>Roll over images to view recipe name. Click image for recipe 'quick-view'!</h5>
+  </div>
+
+  <div class="index-recipe-summary-card">
+    <% @five_recipes.each do |recipe| %>
+      <%= render "recipes/recipe_summary_card", recipe: recipe %>
+    <% end %>
+  </div>
+
+</div>

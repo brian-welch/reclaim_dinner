@@ -59,13 +59,29 @@ def users
 end
 
 def food_preferences
-  return %w[vegetarian vegan pork beef chicken fish shell-fish]
+  return %w[beef pork chicken fish tofu banana]
 end
 
 def food_allergies
-  return %w[peanut lactose gluten shell-fish]
+  return %w[peanut lactose gluten shellfish egg]
 end
 
 def special_diets
-  return %w[atkins raw weight-watchers zone]
+  return %w[paleo primal vegetarian vegan ketogenic whole30]
 end
+
+
+def set_default_food_preferences
+  User.all.each do |user|
+    FoodPreference.all.each do |preference|
+      FoodPreferenceUser.create!(user_id: user.id, food_preference_id: preference.id)
+    end
+  end
+end
+
+
+
+
+
+
+
