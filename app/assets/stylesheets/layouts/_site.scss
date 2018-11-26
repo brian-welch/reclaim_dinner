@@ -1,3 +1,6 @@
+html {
+  background-color: #007d82;
+}
 body {
   padding-top: 49px;
 }
@@ -40,7 +43,7 @@ hr {
   border-bottom: 1px solid white;
 }
 
-h1, h2, h3, h4, h5, h6, p, li, td, span, input, button, a, tr {
+h1, h2, h3, h4, h5, h6, p, li, td, span, input, button, a, tr, div {
   transition: ease 300ms all;
 }
 img {

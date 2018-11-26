@@ -3,10 +3,22 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show]
 
   def index
-    @seven_recipes = []
-    7.times { @seven_recipes << Recipe.all[rand(0..Recipe.count)] }
-    @seven_recipes
+    if current_user.nil?
+      @five_recipes = []
+      5.times.with_index { @five_recipes << Recipe.all.sample }
+      @five_recipes
+    else
+      @five_recipes = []
+      5.times.with_index { @five_recipes << Recipe.all.sample }
+      @five_recipes
+    end
+
   end
+
+  def recipe_shuffle
+
+  end
+
 
   def show
 

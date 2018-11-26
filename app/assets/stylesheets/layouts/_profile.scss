@@ -47,6 +47,9 @@
   width: 100%;
   display: flex;
   justify-content: space-around;
+  div > h6 {
+    text-align: center;
+  }
 }
 
 
@@ -62,7 +65,7 @@
 
 .show-profile-grid-outer {
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 135px);
   padding: 5px;
 }
 
@@ -164,8 +167,7 @@
 
 .toggle-button-button {
   outline: none !important;
-  background-color: #e0e0e0;
-  background-color: rgba(219, 85, 83, 0.75);
+  background-color: rgba(219, 85, 83, 0.2);
   position: absolute;padding: 9px;
   border-radius: 50px;
   margin: 1px 0 0 0; left: 1px;
@@ -179,12 +181,12 @@
 
 .turn-on-toggle {
   left: 20px;
-  background-color: $rd-brand-color-dark;
-  box-shadow: inset 0 0 5px 10px rgba(48, 211, 67, 0.5),
-              inset 0 -3px 2px rgba(0, 0, 0, 0.2),
+  background-color: rgba(76, 175, 178, 1);
+  box-shadow: inset 0 -3px 2px rgba(0, 0, 0, 0.2),
               inset 0 0 3px 1px rgba(0, 0, 0, 0.3),
-              inset 0 2px 1px 1px rgba(255, 255, 255, 0.5),
-              0 0 9px 2px rgba(48, 211, 67, 0.3);
+              inset 0 0 5px 10px rgba(76, 175, 178, 0.6),
+              inset 0 2px 1px 1px rgba(255, 255, 255, 1),
+              0 0 9px 2px rgba(76, 175, 178, 0.3);
 
 }
 
@@ -197,15 +199,24 @@
 
 .profile-toggle-form-on {
   color: $rd-brand-color-dark;
+  font-weight: 600;
+  position: relative;
+  top: -5px;
 }
 .profile-toggle-form-off {
-  color: $red;
+  position: relative;
+  top: -5px;
+  color: rgba(219, 85, 83, 1);
 }
 
 .profile-personalization-parameter-column {
   text-align: right;
-  padding: 0 10px 0 0;
+  padding: 0 10px 8px 0;
 }
 
-
+.profile-personalization-button-column {
+  display: flex;
+  align-items: baseline;
+  padding: 0;
+}
 

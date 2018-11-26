@@ -1,0 +1,37 @@
+
+<% ingredients = RecipeIngredient.where(recipe_id: recipe.id)
+photo = recipe.photo_link
+link = recipe_path(recipe)
+ingredients = ingredients
+prep_time = recipe.prep_time
+cook_time = recipe.cook_time
+recipe_name = recipe.name
+id = recipe.id %>
+
+
+<div id="info_card-<%= id %>" class="recipe-summary-block-outer">
+  <div class="recipe-summary-block-inner">
+    <div class="recipe-summary-photo-box">
+      <%= image_tag photo, alt: "Photo of #{recipe_name}", height: "238" %>
+    </div>
+    <div class="recipe-summary-info-box">
+      <div class="recipe-summary-info-name">
+       <h5><%#= recipe_name %> <%= link_to "#{recipe_name} <i class=\"fas fa-link\"></i>".html_safe, link %> </h5>
+     </div>
+     <div class="recipe-summary-info-specs">
+      <div class="recipe-summary-info-ingredients">
+        <% ingredients.each_with_index do |_, i| %>
+        <div class="recipe-summary-ingredient-item"> <%= Ingredient.find(ingredients[i].ingredient_id).name %>
+        </div>
+        <% end %>
+      </div>
+      <div class="recipe-summary-info-time">
+        <p>Prep Time: <%= prep_time %></p>
+        <p>Cook Time: <%= cook_time %></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
