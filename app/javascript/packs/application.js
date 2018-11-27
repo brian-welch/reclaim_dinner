@@ -5,3 +5,8 @@ import { recipeInformationToggleAlt } from "components/recipe-information-toggle
 recipeInformationToggleAlt()
 import { recipeLockButtonAction } from "components/recipe-lock.js"
 recipeLockButtonAction()
+
+window.$ = $
+
+import { showRecipeToggleFavorite } from "components/show-page-favorite-recipe.js"
+showRecipeToggleFavorite()
