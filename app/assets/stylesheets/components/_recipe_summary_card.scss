@@ -21,11 +21,12 @@
 }
 
 .recipe-summary-photo-box {
-  padding: 15px 10px 0 15px;
+  margin: 15px 15px 6px 15px;
+  border: 2.25px solid #007d82;
 }
 .recipe-summary-photo-box > img {
-  border-radius: 5px;
-  box-shadow: 0 0 0 1px #007d82;
+  border-radius: 10px;
+  // box-shadow: 0 0 0 1px #007d82;
 }
 
 .recipe-summary-info-box {
@@ -74,5 +75,5 @@
 }
 
 .recipe-summary-info-time {
-  padding-right: 15px;
+  margin-right: 15px;
 }
