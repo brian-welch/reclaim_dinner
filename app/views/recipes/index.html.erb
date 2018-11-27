@@ -2,12 +2,13 @@
   <div class="index-recipe-shuffle-button">
     <%= link_to shuffle_path, remote: true do -%>
       <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
-    <% end -%>
+    <% end %>
   </div>
 <div class="index-recipe-container">
 
   <div class="index-all-recipe-outer">
-    <% days = %w[monday tuesday wednesday thursday friday] %>
+    <!-- In case of emergency, replace  -->
+    <% days = %w[Monday Tuesday Wednesday Thursday Friday] %>
     <% @five_recipes.each_with_index do |recipe, i| %>
       <% day = days[i] %>
       <div class="index-single-recipe-outer" data-locked="false" data-recipe-id="<%= recipe.id %>" id="<%= day %>">

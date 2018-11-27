@@ -1,0 +1,16 @@
+<div class="rd-navbar-fixed-top rd-navbar-nav-resize sticky navbar-to-top">
+  <div class="navbar-header">
+      <!-- root link with brand logo when it's decided -->
+  </div>
+
+
+  <!-- Right Navigation -->
+
+
+    <% if user_signed_in? %>
+      <%= render "shared/signed_in_navbar" %>
+    <% else %>
+      <%= render "shared/signed_out_navbar" %>
+    <% end %>
+
+</div>
