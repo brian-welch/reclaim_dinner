@@ -19,4 +19,8 @@ module ApplicationHelper
               </div><div class='profile-toggle-form-on'>#{args[:on]}<\/div> \
               <\/td>"
   end
+
 end
+
+
+

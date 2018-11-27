@@ -7,11 +7,9 @@
       <div class="col-xs-12 col-sm-6 col-md-6">
 
         <div class="show-recipe-photo-outer">
-
           <% if user_signed_in? %>
             <%= render 'recipes/favorite_button', recipe: @recipe %>
           <% end %>
-
           <div class="show-recipe-photo-inner">
             <%= image_tag  @recipe.photo_link, alt: "Image of #{@recipe.name}"%>
           </div>
@@ -23,11 +21,18 @@
 
         <div class="show-icons-tools-outer">
           <div class="show-icons-tools-inner">
+            <ul class="list-inline">
+              <% @recipe.list_of_icons.each do |icon| %>
+                <li>
+                  <%= image_tag "recipes/icons/#{icon}", width: "40px" %>
+                </li>
+              <% end %>
+            </ul>
             <!-- icons or tools - gui things -->
-            <%= image_tag 'recipes/icons/dairy-free-hover.svg', height: "50" %>
-            <%= image_tag 'recipes/icons/gluten-free-hover.svg', height: "50" %>
-            <%= image_tag 'recipes/icons/vegan-hover.svg', height: "50" %>
-            <%= image_tag 'recipes/icons/vegetarian-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/dairy-free-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/gluten-free-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/vegan-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/vegetarian-hover.svg', height: "50" %>
           </div>
         </div>
 
@@ -84,3 +89,5 @@
     <% #raise %>
   </div>
 </div>
+
+

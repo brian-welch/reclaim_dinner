@@ -1,3 +1,4 @@
+require 'pry-byebug'
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_recipe, :set_user_favorites, only: [:show]
@@ -15,8 +16,20 @@ class RecipesController < ApplicationController
 
   end
 
-  def recipe_shuffle
+  def shuffle
+    @five_new_recipes = Array.new(5) { Recipe.all.sample }
+    days = %w[monday tuesday wednesday thursday friday]
+    @recipes = {}
+    days.each.with_index do |day, idx|
+      @recipes[day] = @five_new_recipes[idx]
+    end
+  end
 
+  def create
+      @five_recipes = []
+      5.times.with_index { @five_recipes << Recipe.all.sample }
+      @five_recipes
+      redirect_to recipes_path
   end
 
   def show

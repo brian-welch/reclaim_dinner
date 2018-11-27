@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources 'user_favorites', only: [:create, :destroy]
 
+  get 'shuffle-recipes', to: 'recipes#shuffle', as: 'shuffle'
 
 
   get 'profile', to: 'profiles#index', as: 'profile'

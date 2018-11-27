@@ -4,7 +4,7 @@
 <sql>
 <datatypes db="mysql">
   <group label="Numeric" color="rgb(238,238,170)">
-    <type label=a"Integer" length="0" sql="INTEGER" quote=""/>
+    <type label="Integer" length="0" sql="INTEGER" quote=""/>
     <type label="TINYINT" length="0" sql="TINYINT" quote=""/>
     <type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
     <type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
