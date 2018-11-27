@@ -11,7 +11,7 @@
     <% days = %w[Monday Tuesday Wednesday Thursday Friday] %>
     <% @five_recipes.each_with_index do |recipe, i| %>
       <% day = days[i] %>
-      <div class="index-single-recipe-outer" data-locked="false" data-recipe-id="<%= recipe.id %>" id="<%= day %>">
+      <div class="index-single-recipe-outer" data-locked="false" id="<%= day %>"> <!-- data-recipe-id="<%= recipe.id %>" -->
         <%= render "recipes/recipe_display_card", recipe: recipe, day: day %>
       </div>
     <% end %>

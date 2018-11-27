@@ -1,4 +1,3 @@
-require 'pry-byebug'
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :shuffle]
   before_action :set_recipe, only: [:show]
