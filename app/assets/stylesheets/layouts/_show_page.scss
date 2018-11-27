@@ -1,3 +1,37 @@
+.recipe-show-container > h1 {
+text-align: center;
+margin: 10px 0;
+font-size: 44px;
+}
+.recipe-show-container > hr {
+  margin: 10px;
+}
+
+.show-recipe-favorite-button{
+  height: 50px;
+  width: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 1),
+              0 0 0 1px rgba(255, 255, 255, 1),
+              0 0 10px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  line-height: 51px;
+  font-size: 1.65em;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+.show-recipe-favorite-button:hover {
+  color: rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 5px red, 0 0 3px red, 0 0 1px red;
+}
+.show-recipe-active-favorite-recipe {
+  color: rgba(255, 0, 0, 0.75);
+}
+
+
 .show-recipe-photo-outer {
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 2px;

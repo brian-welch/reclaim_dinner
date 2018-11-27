@@ -1,0 +1,10 @@
+<% favorite_present = @user_favorites.any? {|object| object.recipe_id == recipe.id} %>
+<%= form_tag user_favorites_path, id: "favorite-button-recipe-#{recipe.id}", remote: true do -%>
+<%=  hidden_field_tag 'recipe_id', recipe.id %>
+<%=  hidden_field_tag 'exist', favorite_present %>
+<% active = "show-recipe-active-favorite-recipe" if favorite_present %>
+<button type="submit" title="Add or remove <%= recipe.name %> to favorites " class="show-recipe-favorite-button <%= active %>">
+  <i class="fas fa-heart"></i>
+</button>
+
+<% end -%>

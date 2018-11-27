@@ -1,7 +1,9 @@
 <div class="rd-navbar-fixed-top rd-navbar-nav-resize sticky navbar-to-top">
    <div class="navbar-header">
       <!-- root link with brand logo when it's decided -->
-      <%= link_to "-RD-", root_path, class: "navbar-brand" %>
+      <%= link_to root_path, class: "navbar-brand" do -%>
+        <%= image_tag "site/logo/reclaim_dinner_logo_color_no_outline_60x50.png" %>
+      <% end -%>
     </div>
 
 
