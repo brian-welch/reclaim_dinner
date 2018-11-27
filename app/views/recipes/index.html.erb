@@ -1,6 +1,6 @@
 
   <div class="index-recipe-shuffle-button">
-    <%= form_tag recipes_path do -%>
+    <%= link_to shuffle_path, remote: true do -%>
       <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
     <% end -%>
   </div>
@@ -10,7 +10,9 @@
     <% days = %w[monday tuesday wednesday thursday friday] %>
     <% @five_recipes.each_with_index do |recipe, i| %>
       <% day = days[i] %>
-      <%= render "recipes/recipe_display_card", recipe: recipe, day: day %>
+      <div class="index-single-recipe-outer" data-locked="false" data-recipe-id="<%= recipe.id %>" id="<%= day %>">
+        <%= render "recipes/recipe_display_card", recipe: recipe, day: day %>
+      </div>
     <% end %>
   </div>
 

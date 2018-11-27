@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :create]
   resources :user_recipes, only: [:create, :edit, :update]
 
+  get 'shuffle-recipes', to: 'recipes#shuffle', as: 'shuffle'
+
   get 'profile', to: 'profiles#index', as: 'profile'
   post 'profile', to: 'profiles#update'
 
