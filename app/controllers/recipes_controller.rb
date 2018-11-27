@@ -1,7 +1,8 @@
 require 'pry-byebug'
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_recipe, :set_user_favorites, only: [:show]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :shuffle ]
+  before_action :set_recipe, only: [:show]
+
 
   def index
     if current_user.nil?
