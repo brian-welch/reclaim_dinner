@@ -12,7 +12,10 @@ id = recipe.id %>
 <div id="info_card-<%= id %>" class="recipe-summary-block-outer">
   <div class="recipe-summary-block-inner">
     <div class="recipe-summary-photo-box">
+    <!-- Consider updating line below (cheap-fix) -->
+    <%= link_to "recipes/#{id}" do %>
       <%= image_tag photo, alt: "Photo of #{recipe_name}", height: "238" %>
+    <% end %>
     </div>
     <div class="recipe-summary-info-box">
       <div class="recipe-summary-info-name">
