@@ -11,9 +11,9 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <div class="notice"><%#= notice %></div>
+<!--     <div class="notice"><%#= notice %></div>
     <div class="alert"><%#= alert %></div>
-
+ -->
     <%= render 'shared/flashes' %>
 
     <!-- <div class="container"> -->
@@ -23,5 +23,6 @@
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <%= yield :after_js %>
   </body>
 </html>

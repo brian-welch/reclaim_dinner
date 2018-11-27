@@ -20,6 +20,11 @@ class ProfilesController < ApplicationController
     redirect_to profile_path
   end
 
+  def destroy
+    byebug
+
+  end
+
   private
 
   def set_user

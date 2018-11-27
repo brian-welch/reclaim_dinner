@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_103750) do
+ActiveRecord::Schema.define(version: 2018_11_26_121637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,15 @@ ActiveRecord::Schema.define(version: 2018_11_24_103750) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_favorites", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_user_favorites_on_recipe_id"
+    t.index ["user_id"], name: "index_user_favorites_on_user_id"
+  end
+
   create_table "user_recipes", force: :cascade do |t|
     t.date "chosen_date"
     t.bigint "user_id"
@@ -209,6 +218,8 @@ ActiveRecord::Schema.define(version: 2018_11_24_103750) do
   add_foreign_key "recipe_ratings", "users"
   add_foreign_key "special_diet_users", "special_diets"
   add_foreign_key "special_diet_users", "users"
+  add_foreign_key "user_favorites", "recipes"
+  add_foreign_key "user_favorites", "users"
   add_foreign_key "user_recipes", "recipes"
   add_foreign_key "user_recipes", "users"
   add_foreign_key "users", "allergy_users"

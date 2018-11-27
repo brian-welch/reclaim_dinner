@@ -1,87 +1,93 @@
+
 <div class="container">
-<h1><%= @recipe.name %></h1>
-<hr>
-<div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-6">
+  <div class="recipe-show-container">
+    <h1><%= @recipe.name %></h1>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
 
-    <div class="show-recipe-photo-outer">
-      <div class="show-recipe-photo-inner">
-        <%= image_tag  @recipe.photo_link, alt: "Image of #{@recipe.name}"%>
-      </div>
-      <div class="show-recipe-recipe-ref">
-        <div>recipe id: <%= @recipe.id %></div>
-        <div>credit: <%= @recipe.source %></div>
-      </div>
-    </div>
-
-    <div class="show-icons-tools-outer">
-      <div class="show-icons-tools-inner">
-        <ul class="list-inline">
-          <% @recipe.list_of_icons.each do |icon| %>
-            <li>
-              <%= image_tag "recipes/icons/#{icon}", width: "40px" %>
-            </li>
+        <div class="show-recipe-photo-outer">
+          <% if user_signed_in? %>
+            <%= render 'recipes/favorite_button', recipe: @recipe %>
           <% end %>
-        </ul>
-        <!-- icons or tools - gui things -->
-        <%#= image_tag 'recipes/icons/dairy-free-hover.svg', height: "50" %>
-        <%#= image_tag 'recipes/icons/gluten-free-hover.svg', height: "50" %>
-        <%#= image_tag 'recipes/icons/vegan-hover.svg', height: "50" %>
-        <%#= image_tag 'recipes/icons/vegetarian-hover.svg', height: "50" %>
+          <div class="show-recipe-photo-inner">
+            <%= image_tag  @recipe.photo_link, alt: "Image of #{@recipe.name}"%>
+          </div>
+          <div class="show-recipe-recipe-ref">
+            <div>recipe id: <%= @recipe.id %></div>
+            <div>credit: <%= @recipe.source %></div>
+          </div>
+        </div>
+
+        <div class="show-icons-tools-outer">
+          <div class="show-icons-tools-inner">
+            <ul class="list-inline">
+              <% @recipe.list_of_icons.each do |icon| %>
+                <li>
+                  <%= image_tag "recipes/icons/#{icon}", width: "40px" %>
+                </li>
+              <% end %>
+            </ul>
+            <!-- icons or tools - gui things -->
+            <%#= image_tag 'recipes/icons/dairy-free-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/gluten-free-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/vegan-hover.svg', height: "50" %>
+            <%#= image_tag 'recipes/icons/vegetarian-hover.svg', height: "50" %>
+          </div>
+        </div>
+
       </div>
-    </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <div class="show-recipe-details-outer">
+          <div class="show-recipe-details-inner">
+            <!-- preparation and other details -->
+            <h5>Details:</h5>
+            <ul>
+              <li>Prep Time: <%= @recipe.prep_time %> min.</li>
+              <li>Cook Time: <%= @recipe.cook_time %> min.</li>
+            </ul>
 
-  </div>
-  <div class="col-xs-12 col-sm-6 col-md-6">
-    <div class="show-recipe-details-outer">
-      <div class="show-recipe-details-inner">
-        <!-- preparation and other details -->
-        <h5>Details:</h5>
-        <ul>
-          <li>Prep Time: <%= @recipe.prep_time %> min.</li>
-          <li>Cook Time: <%= @recipe.cook_time %> min.</li>
-        </ul>
-
-        <hr>
-        <h5>Ingredients:</h5>
-        <ul>
-          <% @recipe_ingredients.each do |ingred_obj| %>
-          <li>
-            <%= ingred_obj.metric_quantity.to_i %>
-              <%= MetricMeasure.find(ingred_obj.metric_measure_id).name %>
-              <%= Ingredient.find(ingred_obj.ingredient_id).name %>
+            <hr>
+            <h5>Ingredients:</h5>
+            <ul>
+              <% @recipe_ingredients.each do |ingred_obj| %>
+              <li>
+                <%= ingred_obj.metric_quantity.to_i %>
+                <%= MetricMeasure.find(ingred_obj.metric_measure_id).name %>
+                <%= Ingredient.find(ingred_obj.ingredient_id).name %>
 
               </li>
-          <% end %>
-        </ul>
+              <% end %>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-xs-12 col-sm-3">
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
         <h5 align="center">Other.....Stuff?</h5>
-  </div>
-  <div class="col-xs-12 col-sm-6">
-    <div class="show-recipe-instructions-outer">
-      <div class="show-recipe-instructions-inner">
-        <!-- Recipe preparation instrucitons -->
-        <h5>Instructions:</h5>
-        <ul>
-          <% @recipe.instructions.each do |step| %>
-          <li><%= step %></li>
-          <% end %>
-        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="show-recipe-instructions-outer">
+          <div class="show-recipe-instructions-inner">
+            <!-- Recipe preparation instrucitons -->
+            <h5>Instructions:</h5>
+            <ul>
+              <% @recipe.instructions.each do |step| %>
+              <li><%= step %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <h5 align="center">Rating, social media, reviews?</h5>
       </div>
     </div>
-  </div>
-  <div class="col-xs-12 col-sm-3">
-        <h5 align="center">Rating, social media, reviews?</h5>
-  </div>
-</div>
 
-<% #raise %>
+    <% #raise %>
+  </div>
 </div>
 
 
