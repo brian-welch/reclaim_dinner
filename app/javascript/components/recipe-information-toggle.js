@@ -26,4 +26,8 @@ function recipeInformationToggleAlt() {
   });
 }
 
+
+window.recipeInformationToggleAlt = recipeInformationToggleAlt
+
+
 export { recipeInformationToggleAlt };
