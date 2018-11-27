@@ -1,8 +1,7 @@
 require 'pry-byebug'
 class RecipesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show, :shuffle ]
+  skip_before_action :authenticate_user!, only: [:index, :show, :shuffle]
   before_action :set_recipe, only: [:show]
-
 
   def index
     if current_user.nil?
@@ -18,7 +17,7 @@ class RecipesController < ApplicationController
 
   def shuffle
     @five_new_recipes = Array.new(5) { Recipe.all.sample }
-    days = %w[monday tuesday wednesday thursday friday]
+    days = %w[Monday Tuesday Wednesday Thursday Friday]
     @recipes = {}
     days.each.with_index do |day, idx|
       @recipes[day] = @five_new_recipes[idx]
@@ -45,11 +44,7 @@ class RecipesController < ApplicationController
   def set_user_favorites
     @user_favorites = UserFavorite.where(user: current_user)
   end
-
 end
-
-
-
 
     # model = "#{params[:model].tr('_','')}".constantize
     # join_model = "#{params[:model].tr('_','')}User".constantize
