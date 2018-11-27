@@ -13,7 +13,6 @@ class RecipesController < ApplicationController
       5.times.with_index { @five_recipes << Recipe.all.sample }
       @five_recipes
     end
-
   end
 
   def shuffle
@@ -26,15 +25,13 @@ class RecipesController < ApplicationController
   end
 
   def create
-      @five_recipes = []
-      5.times.with_index { @five_recipes << Recipe.all.sample }
-      @five_recipes
-      redirect_to recipes_path
+    @five_recipes = []
+    5.times.with_index { @five_recipes << Recipe.all.sample }
+    @five_recipes
+    redirect_to recipes_path
   end
 
-
   def show
-
     @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:id])
   end
 
