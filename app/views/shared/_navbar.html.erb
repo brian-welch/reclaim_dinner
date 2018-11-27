@@ -10,8 +10,6 @@
   <!-- Right Navigation -->
 
     <% if user_signed_in? %>
-      <%= render "shared/homepage_navbar" %>
-    <% elsif user_signed_in? %>
       <%= render "shared/signed_in_navbar" %>
     <% else %>
       <%= render "shared/signed_out_navbar" %>
