@@ -1,0 +1,15 @@
+
+function shuffleCard(id, newHtml) {
+  const card = document.getElementById(id);
+  if (card.dataset.locked === "false") {
+    card.innerHTML = newHtml;
+  }
+}
+
+<% @recipes.each do |day, recipe| %>
+  var thatDay = <%= day %>;
+  var day = thatDay.id;
+  var newHtml = '<%= j render "recipes/recipe_display_card", recipe: recipe, day: day %>';
+  shuffleCard(day, newHtml);
+<% end %>
+recipeLockButtonAction();
