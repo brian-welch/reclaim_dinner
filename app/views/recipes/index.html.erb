@@ -11,7 +11,7 @@
     <% days = %w[Monday Tuesday Wednesday Thursday Friday] %>
     <% @five_recipes.each_with_index do |recipe, i| %>
       <% day = days[i] %>
-      <div class="index-single-recipe-outer" data-locked="false" id="<%= day.downcase %>"> <!-- data-recipe-id="<%= recipe.id %>" -->
+      <div class="index-single-recipe-outer" data-locked="false" data-recipeid="<%= recipe.id %>" id="<%= day.downcase %>"> <!-- data-recipe-id="<%= recipe.id %>" -->
         <%= render "recipes/recipe_display_card", recipe: recipe, day: day %>
       </div>
     <% end %>
@@ -30,17 +30,20 @@
 
 </div>
 
+<%#= link_to "recipes/#{id}" do %>
+      <%#= image_tag photo, alt: "Photo of #{recipe_name}", height: "237.5" %>
+    <%# end %>
+
 <!-- working form below: -->
 <%= form_tag user_recipes_path do %>
-  <%= label_tag :monday_id, 'monday-field' %>
-  <%= text_field_tag :recipe_id, params[:id] %>
-  <%= label_tag :tuesday_id, 'tuesday-field' %>
-  <%= text_field_tag :recipe_id, params[:id] %>
-  <%= label_tag :wednesday_id, 'wednesday-field' %>
-  <%= text_field_tag :recipe_id, params[:id] %>
-  <%= label_tag :thursday_id, 'thursday-field' %>
-  <%= text_field_tag :recipe_id, params[:id] %>
-  <%= label_tag :friday_id, 'friday-field' %>
-  <%= text_field_tag :recipe_id, params[:recipe_id] %>
+  <%= hidden_field_tag :monday_id, @five_recipes[0].id %>
+  <%= hidden_field_tag :tuesday_id, @five_recipes[1].id %>
+  <%= hidden_field_tag :wednesday_id, @five_recipes[2].id %>
+  <%= hidden_field_tag :thursday_id, @five_recipes[3].id %>
+  <%= hidden_field_tag :friday_id, @five_recipes[4].id %>
   <%= submit_tag "Save Week" %>
 <% end %>
+
+
+
+
