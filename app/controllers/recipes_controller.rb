@@ -1,21 +1,30 @@
+require 'pry-byebug'
 class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :shuffle]
   before_action :set_recipe, :set_user_favorites, only: [:show]
 
   def index
     if current_user.nil?
-      @five_recipes = []
-      5.times.with_index { @five_recipes << Recipe.all.sample }
-      @five_recipes
+      all_recipes = Recipe.all
+      @five_recipes = Array.new(5) { all_recipes.sample }
+      raise
     else
-      @five_recipes = []
-      5.times.with_index { @five_recipes << Recipe.all.sample }
-      @five_recipes
+      current_user.reload
+      filtered_recipes = current_user.apply_filters
+      @five_recipes = Array.new(5) { filtered_recipes.sample }
     end
   end
 
   def shuffle
-    @five_new_recipes = Array.new(5) { Recipe.all.sample }
+    if current_user.nil?
+      all_recipes = Recipe.all
+      @five_new_recipes = Array.new(5) { all_recipes.sample }
+      raise
+    else
+      current_user.reload
+      filtered_recipes = current_user.apply_filters
+      @five_new_recipes = Array.new(5) { filtered_recipes.sample }
+    end
     days = %w[Monday Tuesday Wednesday Thursday Friday]
     @recipes = {}
     days.each.with_index do |day, idx|
@@ -31,7 +40,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe_ingredients = RecipeIngredient.where(recipe_id: params[:id])
+    @recipe_ingredients = @recipe.recipe_ingredients
   end
 
   private
@@ -44,14 +53,3 @@ class RecipesController < ApplicationController
     @user_favorites = UserFavorite.where(user: current_user)
   end
 end
-
-    # model = "#{params[:model].tr('_','')}".constantize
-    # join_model = "#{params[:model].tr('_','')}User".constantize
-    # field_id = "#{params[:model].downcase}_id"
-
-    # if params[:exist] == "true"
-    #   join_model.where(user: current_user, field_id => model.find_by_name(params[:name]).id).each(&:destroy)
-    # else
-    #   join_model.create!(user: current_user, field_id => model.find_by_name(params[:name]).id).save
-    # end
-    # redirect_to profile_path

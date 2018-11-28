@@ -6,6 +6,12 @@ function recipeInformationToggleAlt() {
     $(".index-single-recipe-image").not(this).toggleClass("index-single-recipe-unfocus");
     $(this).toggleClass("index-single-recipe-focus");
     $("#dynamic-recipe-name").html($(this).attr("data-recipe-name")).fadeIn(1);
+
+
+
+
+
+
   });
   $(".index-single-recipe-image").mouseout(function () {
     $("#dynamic-recipe-name").fadeOut(1);

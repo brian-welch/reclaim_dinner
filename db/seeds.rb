@@ -127,6 +127,8 @@ recipe_file_array.each_with_index do |recipe_array, i|
                      vegan: recipe_array["vegan"],
                      glutenFree: recipe_array["glutenFree"],
                      dairyFree: recipe_array["dairyFree"],
+                     gluten: !recipe_array["glutenFree"],
+                     dairy: !recipe_array["dairyFree"],
                      ketogenic: recipe_array["ketogenic"],
                      paleo: recipe_array["paleo"],
                      primal: recipe_array["primal"],
