@@ -8,5 +8,6 @@ recipeLockButtonAction()
 
 window.$ = $
 
+
 import { showRecipeToggleFavorite } from "components/show-page-favorite-recipe.js"
 showRecipeToggleFavorite()

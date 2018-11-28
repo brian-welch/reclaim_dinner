@@ -63,7 +63,7 @@ def food_preferences
 end
 
 def food_allergies
-  return %w[peanut lactose gluten shellfish egg]
+  return %w[peanut gluten dairy shellfish egg]
 end
 
 def special_diets
