@@ -1,7 +1,7 @@
 class UserRecipesController < ApplicationController
 
   def create
-    raise
+    # raise
   end
 
   private
