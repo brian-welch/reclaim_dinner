@@ -1,6 +1,9 @@
 class UserRecipesController < ApplicationController
+  def index
+    @user_recipes = UserRecipe.all
+  end
 
-  def create
+  def create #had changed from shopping_list
     day = (Date.today + 7).beginning_of_week
     user_recipes = []
     # WIPES DB OF ALL USER RECIPES
@@ -16,7 +19,12 @@ class UserRecipesController < ApplicationController
       user_recipe.save
       user_recipes << user_recipe
     end
-
-    redirect_to profile_path
+    redirect_to shopping_list_path
   end
+
+  def shopping_list
+    @user_recipes = current_user.user_recipes
+    @ingredients = @user_recipes.map(&:recipe).map(&:ingredients).flatten.map(&:name).uniq.sort
+  end
+    helper_method :index
 end

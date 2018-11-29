@@ -4,3 +4,4 @@ class UserRecipe < ApplicationRecord
 
   validates :chosen_date, uniqueness: { scope: :user }
 end
+
