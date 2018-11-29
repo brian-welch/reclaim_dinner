@@ -1,22 +1,24 @@
-<table class="dashboard-favorites-table">
-  <tr>
-    <th>Recipe Name</th><th>Added to Favorites</th><th>Added to Dinner Plan</th><th>Remove?</th>
-  </tr>
-  <% favorites_table.each do |joint| %>
-  <tr id="profile-recipe-id-<%= joint.recipe_id %>">
-    <td><%= Recipe.find(joint.recipe_id).name %></td>
-    <td><%= joint.created_at %></td>
-    <td></td>
-    <td>
-      <%= form_tag user_favorite_path(joint.id), method: :delete, remote: true, confirm: "test" do -%>
-      <input type="hidden" name="row_id" value="profile-recipe-id-<%= joint.recipe_id %>">
+<div class="absoluto" id="favorites_table_content">
+  <h6>Favorite Recipes</h6>
+  <table class="dashboard-favorites-table">
+    <tr>
+      <th>Recipe Name</th><th>Added to Favorites</th><th>Remove?</th>
+    </tr>
+    <% favorites_table.each do |joint| %>
+    <tr id="profile-recipe-id-<%= joint.recipe_id %>">
+      <td><%= link_to Recipe.find(joint.recipe_id).name, recipe_path(Recipe.find(joint.recipe_id)) %></td>
+      <td><%= joint.created_at %></td>
+      <td>
+        <%= form_tag user_favorite_path(joint.id), method: :delete, remote: true, confirm: "test" do -%>
+        <input type="hidden" name="row_id" value="profile-recipe-id-<%= joint.recipe_id %>">
 
-      <%= button_tag :submit, class: "profile-trash-favorite", confirm: "test" do %>
-      <i class="fas fa-trash-alt"></i>
-      <% end %>
+        <%= button_tag :submit, class: "profile-trash-favorite", confirm: "test" do %>
+        <i class="fas fa-trash-alt"></i>
+        <% end %>
 
-      <% end -%>
-    </td>
-  </tr>
-  <% end %>
-</table>
+        <% end -%>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

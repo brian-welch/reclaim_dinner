@@ -1,1 +1,17 @@
-<h3>Schedule</h3>
+<div class="absoluto top-tab" id="schedule_table_content">
+  <h6>My Upcoming Recipes</h6>
+  <table class="dashboard-favorites-table">
+    <tr>
+      <th>Day</th><th>Date</th><th></th><th>Recipe</th><th>Total Time</th>
+    </tr>
+    <% schedule_table.each do |joint| %>
+    <tr id="profile-recipe-id-<%= joint.recipe_id %>">
+      <td><%= %w[Sunday Monday Tuesday Wednesday Thursday Friday Saturday][joint.chosen_date.wday] %></td>
+      <td><%= joint.chosen_date.to_s %></td>
+      <td><%= image_tag Recipe.find(joint.recipe_id).photo_link, height: "50" %></td>
+      <td><%= link_to Recipe.find(joint.recipe_id).name, recipe_path(Recipe.find(joint.recipe_id)) %></td>
+      <td><%= Recipe.find(joint.recipe_id).prep_time + Recipe.find(joint.recipe_id).cook_time %> minutes</td>
+    </tr>
+    <% end %>
+  </table>
+</div>
