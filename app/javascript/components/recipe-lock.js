@@ -1,5 +1,6 @@
 function recipeLockButtonAction() {
   $(".index-single-recipe-lock-button").click(function(){
+
     if ($(this)[0].parentElement.dataset.locked === "false") {
       $(this)[0].parentElement.dataset.locked = "true";
     } else if ($(this)[0].parentElement.dataset.locked === "true") {
@@ -7,6 +8,8 @@ function recipeLockButtonAction() {
     }
     $(this).toggleClass("lock-button-locked");
     $(this).html($(this).html() == '<i class="fas fa-lock-open"></i>' ? '<i class="fas fa-lock"></i>' : '<i class="fas fa-lock-open"></i>');
+    // var lock_classes = document.querySelector(".index-single-recipe-lock-button").classList;
+
   });
 
   $("#save-week-button").hide();

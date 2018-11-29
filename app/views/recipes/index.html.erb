@@ -1,9 +1,9 @@
-
-  <div class="index-recipe-shuffle-button">
+  <div class="index-recipe-shuffle-button" id="shuffleListButton">
     <%= link_to shuffle_path, remote: true do -%>
       <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
     <% end %>
   </div>
+
 <div class="index-recipe-container">
 
   <div class="index-all-recipe-outer">
@@ -44,7 +44,15 @@
   <%= hidden_field_tag :wednesday_id, @five_recipes[2].id %>
   <%= hidden_field_tag :thursday_id, @five_recipes[3].id %>
   <%= hidden_field_tag :friday_id, @five_recipes[4].id %>
-  <%= submit_tag "Save Week", id: "save-week-button" %>
+
+
+  <div class="index-recipe-shopping-button" id="goToShoppingListButton">
+      <button class="btn rd-button btn-primary" type="submit">Show Shopping List!</button>
+  </div>
+
+
+  <%#= submit_tag "Save Week", id: "save-week-button" %>
+
 <% end %>
 
 

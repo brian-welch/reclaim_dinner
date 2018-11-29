@@ -12,7 +12,12 @@ window.$ = $
 import { showRecipeToggleFavorite } from "components/show-page-favorite-recipe.js"
 showRecipeToggleFavorite()
 
-import { bullshit } from "components/count-locked-recipes.js"
-bullshit()
+
+import { changeTabContent } from "components/dashboard-tab.js"
+changeTabContent()
+
+// import { bullshit } from "components/count-locked-recipes.js"
+// bullshit()
+
 
 

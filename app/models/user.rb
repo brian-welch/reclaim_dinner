@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :user_recipes
+  has_many :user_favorites
   has_many :recipe_ratings
   has_many :recipes, through: :user_recipes
 

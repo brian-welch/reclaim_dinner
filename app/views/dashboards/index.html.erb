@@ -1,0 +1,92 @@
+<div class="container">
+
+  <div class="user-dashboard">
+
+    <div class="dashboard-header-bar">
+      <h1><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>'s Dashboard</h1>
+      <hr>
+    </div>
+
+    <div class="dashboard-grid-outer">
+      <div class="dashboard-grid-inner"><!-- grid column -->
+
+        <div class="photo-soc-med"> <!-- left column, toggle buttons -->
+          <div class="dashboard-preferences-box"> <!-- Special Diets -->
+            <div class="">
+              <h6>Special Diets</h6>
+              <table class="dashboard-personalization-list">
+                <% @all_diets.each_with_index do |diet, i| %>
+                <% diet_present = @user_diets.any? {|object| object.special_diet_id == diet.id} %>
+                <tr style="font-weight: 500;">
+                  <%= form_tag dashboard_path, id: "toggle_3#{i + 1}", remote: true do-%>
+                  <%= profile_form(model: "Special_Diet",
+                   object: diet,
+                   name: "#{diet.name}",
+                   exist: diet_present,
+                   user_id: current_user,
+                   off: "don't filter",
+                   on: "filter" ).html_safe %>
+                   <% end -%>
+                 </tr>
+                 <% end %>
+               </table>
+             </div>
+           </div>
+           <div class="dashboard-preferences-box"> <!-- Food Allergies -->
+            <div class="">
+              <hr>
+              <h6>Food Allergies</h6>
+              <table class="dashboard-personalization-list">
+                <% @all_allergies.each_with_index do |allergy, i| %>
+                <% all_present = @user_allergies.any? {|object| object.allergy_id == allergy.id} %>
+                <tr style="font-weight: 500;">
+                  <%= form_tag dashboard_path, id: "toggle_2#{i + 1}", remote: true  do -%>
+                  <%= profile_form(model: "Allergy",
+                   object: allergy,
+                   name: "#{allergy.name}",
+                   exist: all_present,
+                   user_id: current_user,
+                   off: "don't have",
+                   on: "have").html_safe %>
+                   <% end -%>
+                 </tr>
+                 <% end %>
+               </table>
+             </div>
+           </div>
+
+         </div>
+         <div class="dashboard-tabs-block">
+          <div class="dashboard-tab-button-column">
+            <div class="dashboard-tab-button active-tab" data-tab-content="schedule_table_content">
+              <%= link_to dashboard_path(tab: "schedule_table"), method: :patch, remote: true do %>
+              <button>
+                <i class="far fa-calendar-alt"></i>
+              </button>
+              <% end %>
+            </div>
+            <div class="dashboard-tab-button" data-tab-content="favorites_table_content">
+              <%= link_to dashboard_path(tab: "favorites_table"), method: :patch, remote: true do %>
+              <button>
+                <i class="fas fa-heart"></i>
+              </button>
+              <% end %>
+            </div>
+
+          </div>
+          <div class="dashboard-tab-content-column">
+
+            <%= render "dashboards/schedule_table", schedule_table: @schedule_table %>
+            <%= render "dashboards/favorites_table", favorites_table: @favorites_table %>
+
+          </div>
+        </div>
+        <div class="dashboard-user-personalization-block">
+          <h6>Food preferences 'checkboxes' go here if time permits</h6>
+
+        </div>
+      </div>
+
+    </div> <!-- show user profile -->
+  </div>
+</div><!-- bootstrap container -->
