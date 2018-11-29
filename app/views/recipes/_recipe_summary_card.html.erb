@@ -1,5 +1,5 @@
 
-<% ingredients = RecipeIngredient.where(recipe_id: recipe.id)
+<% ingredients = recipe.ingredients
 photo = recipe.photo_link
 link = recipe_path(recipe)
 ingredients = ingredients
@@ -23,8 +23,8 @@ id = recipe.id %>
      </div>
      <div class="recipe-summary-info-specs">
       <div class="recipe-summary-info-ingredients">
-        <% ingredients.each_with_index do |_, i| %>
-        <div class="recipe-summary-ingredient-item"> <%= Ingredient.find(ingredients[i].ingredient_id).name %>
+        <% ingredients.each do |ingredient| %>
+        <div class="recipe-summary-ingredient-item"> <%= ingredient.name %>
         </div>
         <% end %>
       </div>

@@ -1,5 +1,8 @@
 class Recipe < ApplicationRecord
   has_many :recipe_ingredients, dependent: :destroy
+  has_many :ingredients, through: :recipe_ingredients
+  has_many :user_favorites, dependent: :destroy
+  has_many :users, through: :user_favorites
   has_many :user_recipes
   has_many :recipe_ratings
 
@@ -24,6 +27,7 @@ class Recipe < ApplicationRecord
       result.to_s + '.svg'
     end
   end
+
 end
 
 # Goes sandwiched between the 'end' and'.map' on line 21 - goes right in the middle and .map follows this end in here

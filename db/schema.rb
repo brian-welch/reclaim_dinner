@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 2018_11_28_082835) do
     t.boolean "vegan"
     t.boolean "glutenFree"
     t.boolean "dairyFree"
+    t.boolean "gluten"
+    t.boolean "dairy"
     t.boolean "beef"
     t.boolean "chicken"
     t.boolean "pork"

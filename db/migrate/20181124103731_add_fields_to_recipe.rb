@@ -4,6 +4,8 @@ class AddFieldsToRecipe < ActiveRecord::Migration[5.2]
     add_column :recipes, :vegan, :boolean
     add_column :recipes, :glutenFree, :boolean
     add_column :recipes, :dairyFree, :boolean
+    add_column :recipes, :gluten, :boolean
+    add_column :recipes, :dairy, :boolean
     add_column :recipes, :beef, :boolean
     add_column :recipes, :chicken, :boolean
     add_column :recipes, :pork, :boolean

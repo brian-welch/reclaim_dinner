@@ -25,7 +25,7 @@ def check_recipe_parameter(ingredients_array, variable)
 end
 
 def check_shellfish_parameter(ingredients_array)
-  shellfish = ["clams", "lobster", "mussels", "scallops", "prawns", "shrimp", "crab"]
+  shellfish = ["clams", "lobster", "mussels", "scallops", "prawns", "shrimp", "crab", "jumbo shrimp", "tiger prawns"]
   ingredients_array.any? { |ingredient|  shellfish.include?(ingredient["name"]) }
 end
 
