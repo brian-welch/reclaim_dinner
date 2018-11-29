@@ -19,4 +19,4 @@ class UserRecipesController < ApplicationController
 
     redirect_to profile_path
   end
-
+end
