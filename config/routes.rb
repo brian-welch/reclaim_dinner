@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'
   post 'dashboard', to: 'dashboards#update'
 
+
 end

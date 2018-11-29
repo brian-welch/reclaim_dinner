@@ -12,6 +12,12 @@ function shuffleCard(id, newDisplayHtml) {
   }
 }
 
+function updateFieldFor(day, recipeId) {
+  const inputId = `${day}_id`;
+  const inputField = document.getElementById(inputId);
+  inputField.value = recipeId;
+}
+
 function buildSummaryCards(newSummaryHtml){
   const card = document.querySelector(".index-recipe-summary-card");
   card.innerHTML += newSummaryHtml
@@ -20,12 +26,15 @@ function buildSummaryCards(newSummaryHtml){
 
 
 <% @recipes.each do |day, recipe| %>
-  var thatDay = <%= day %>;
-  var day = thatDay.id;
-  var newDisplayHtml = '<%= j render "recipes/recipe_display_card", recipe: recipe, day: day %>';
+  var day = '<%= day.downcase %>';
+  var newDisplayHtml = '<%= j render "recipes/recipe_display_card", recipe: recipe, day: day.capitalize %>';
   var newSummaryHtml = '<%= j render "recipes/recipe_summary_card", recipe: recipe %>';
   shuffleCard(day, newDisplayHtml);
   buildSummaryCards(newSummaryHtml);
+  var card = document.getElementById(day);
+  if (card.dataset.locked === "false") {
+    updateFieldFor(day, <%= recipe.id %>)
+  }
 <% end %>
 
 
