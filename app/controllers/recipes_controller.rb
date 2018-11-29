@@ -7,7 +7,6 @@ class RecipesController < ApplicationController
     if current_user.nil?
       all_recipes = Recipe.all
       @five_recipes = Array.new(5) { all_recipes.sample }
-      raise
     else
       current_user.reload
       filtered_recipes = current_user.apply_filters
@@ -19,7 +18,6 @@ class RecipesController < ApplicationController
     if current_user.nil?
       all_recipes = Recipe.all
       @five_new_recipes = Array.new(5) { all_recipes.sample }
-      raise
     else
       current_user.reload
       filtered_recipes = current_user.apply_filters
