@@ -1,0 +1,38 @@
+.ingredients-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  flex-wrap: wrap;
+  height: 70vh;
+  border-radius: 10px;
+  border: solid 1px $rd-brand-color-light;
+  // justify-content: center;
+  align-content: space-around;
+  box-shadow: 1.5px 1.5px 3px $rd-brand-color-dark;
+  padding-top: 25px;
+}
+
+.ingredient-item {
+justify-content: space-around;
+ // justify-content: center;
+align-self: auto;
+ }
+
+.upper-page {
+  display: flex;
+  align-content: space-between;
+}
+
+.title {
+  flex-grow: 2;
+}
+
+.email-btn {
+  color: $rd-brand-color-dark;
+  font-size: 50px;
+  align-content: space-around;
+  width: 100px;
+  height: 100px;
+  padding-top: 30px;
+}
+

@@ -11,3 +11,8 @@ window.$ = $
 
 import { showRecipeToggleFavorite } from "components/show-page-favorite-recipe.js"
 showRecipeToggleFavorite()
+
+import { bullshit } from "components/count-locked-recipes.js"
+bullshit()
+
+
