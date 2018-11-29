@@ -11,3 +11,6 @@ window.$ = $
 
 import { showRecipeToggleFavorite } from "components/show-page-favorite-recipe.js"
 showRecipeToggleFavorite()
+
+import { changeTabContent } from "components/dashboard-tab.js"
+changeTabContent()

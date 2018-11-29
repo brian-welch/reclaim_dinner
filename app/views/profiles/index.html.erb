@@ -5,22 +5,69 @@
     <div class="show-profile-header-bar">
       <h1><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>'s Profile</h1>
       <hr>
-  </div>
+    </div>
 
     <div class="show-profile-grid-outer">
       <div class="show-profile-grid-inner"><!-- grid column -->
 
         <div class="show-photo-soc-med"> <!-- left column, 2 rows -->
-          <div class="show-profile-photo">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/brian-welch" %>
-          </div>
-          <hr>
+          <div class="show-profile-preferences-box">
+            <div class="">
+              <h6>Special Diets</h6>
+              <table class="show-profile-personalization-list">
+                <% @all_diets.each_with_index do |diet, i| %>
+                <% diet_present = @user_diets.any? {|object| object.special_diet_id == diet.id} %>
+                <tr style="font-weight: 500;">
+                  <%= form_tag profile_path, id: "toggle_3#{i + 1}", remote: true do-%>
+                  <%= profile_form(model: "Special_Diet",
+                   object: diet,
+                   name: "#{diet.name}",
+                   exist: diet_present,
+                   user_id: current_user,
+                   off: "don't filter",
+                   on: "filter" ).html_safe %>
+                   <% end -%>
+                 </tr>
+                 <% end %>
+               </table>
+             </div>
+           </div>
+           <div class="show-profile-preferences-box">
+            <div class="">
+              <hr>
+              <h6>Food Allergies</h6>
+              <table class="show-profile-personalization-list">
+                <% @all_allergies.each_with_index do |allergy, i| %>
+                <% all_present = @user_allergies.any? {|object| object.allergy_id == allergy.id} %>
+                <tr style="font-weight: 500;">
+                  <%= form_tag profile_path, id: "toggle_2#{i + 1}", remote: true  do -%>
+                  <%= profile_form(model: "Allergy",
+                   object: allergy,
+                   name: "#{allergy.name}",
+                   exist: all_present,
+                   user_id: current_user,
+                   off: "don't have",
+                   on: "have").html_safe %>
+                   <% end -%>
+                 </tr>
+                 <% end %>
+               </table>
+             </div>
+           </div>
+
+
+
+
+          <!-- <div class="show-profile-photo">
+            <%#= image_tag "https://kitt.lewagon.com/placeholder/users/brian-welch" %>
+          </div> -->
+          <!-- <hr>
           <ul>
-            <li><i class="fab fa-facebook"></i> <%= link_to "brianwelch777", "https://www.facebook.com/brianwelch777", target: "blank" %></li>
-            <li><i class="fab fa-instagram"></i> <%= link_to "brian_welch", "https://www.instagram.com/brian_welch/?hl=en", target: "blank" %></li>
-            <li><i class="fab fa-pinterest-square"></i> <%= link_to "brianwelch777", "https://www.pinterest.com/brianwelch777/", target: "blank" %></li>
-            <li><i class="fab fa-google-plus-square"></i> <%= link_to "brian.c.welch", "https://calendar.google.com/calendar/r?tab=wc", target: "blank" %></li>
-          </ul>
+            <li><i class="fab fa-facebook"></i> <%#= link_to "brianwelch777", "https://www.facebook.com/brianwelch777", target: "blank" %></li>
+            <li><i class="fab fa-instagram"></i> <%#= link_to "brian_welch", "https://www.instagram.com/brian_welch/?hl=en", target: "blank" %></li>
+            <li><i class="fab fa-pinterest-square"></i> <%#= link_to "brianwelch777", "https://www.pinterest.com/brianwelch777/", target: "blank" %></li>
+            <li><i class="fab fa-google-plus-square"></i> <%#= link_to "brian.c.welch", "https://calendar.google.com/calendar/r?tab=wc", target: "blank" %></li>
+          </ul> -->
         </div>
         <div class="show-profile-favorites-block">
           <div class="scroll-block">
@@ -37,9 +84,9 @@
                   <%= form_tag user_favorite_path(joint.id), method: :delete, remote: true, confirm: "test" do -%>
                   <input type="hidden" name="row_id" value="profile-recipe-id-<%= joint.recipe_id %>">
 
-                    <%= button_tag :submit, class: "profile-trash-favorite", confirm: "test" do %>
-                      <i class="fas fa-trash-alt"></i>
-                    <% end %>
+                  <%= button_tag :submit, class: "profile-trash-favorite", confirm: "test" do %>
+                  <i class="fas fa-trash-alt"></i>
+                  <% end %>
 
                   <% end -%>
                 </td>
@@ -70,57 +117,57 @@
               </table>
             </div>
           </div> -->
-          <div class="show-profile-preferences-box">
+          <!-- <div class="show-profile-preferences-box">
             <div class="">
               <h6>Special Diets</h6>
               <table class="show-profile-personalization-list">
-                <% @all_diets.each_with_index do |diet, i| %>
-                <% diet_present = @user_diets.any? {|object| object.special_diet_id == diet.id} %>
+                <%# @all_diets.each_with_index do |diet, i| %>
+                <%# diet_present = @user_diets.any? {|object| object.special_diet_id == diet.id} %>
                 <tr style="font-weight: 500;">
-                  <%= form_tag profile_path, id: "toggle_3#{i + 1}", remote: true do-%>
-                  <%= profile_form(model: "Special_Diet",
-                                   object: diet,
-                                   name: "#{diet.name}",
-                                   exist: diet_present,
-                                   user_id: current_user,
-                                   off: "don't filter",
-                                   on: "filter" ).html_safe %>
-                  <% end -%>
-                </tr>
-                <% end %>
-              </table>
-            </div>
-          </div>
-          <div class="show-profile-preferences-box">
+                  <%#= form_tag profile_path, id: "toggle_3#{i + 1}", remote: true do-%>
+                  <%#= profile_form(model: "Special_Diet",
+                   object: diet,
+                   name: "#{diet.name}",
+                   exist: diet_present,
+                   user_id: current_user,
+                   off: "don't filter",
+                   on: "filter" ).html_safe %>
+                   <%# end -%>
+                 </tr>
+                 <%# end %>
+               </table>
+             </div>
+           </div>
+           <div class="show-profile-preferences-box">
             <div class="">
               <h6>Food Allergies</h6>
               <table class="show-profile-personalization-list">
-                <% @all_allergies.each_with_index do |allergy, i| %>
-                <% all_present = @user_allergies.any? {|object| object.allergy_id == allergy.id} %>
+                <%# @all_allergies.each_with_index do |allergy, i| %>
+                <%# all_present = @user_allergies.any? {|object| object.allergy_id == allergy.id} %>
                 <tr style="font-weight: 500;">
-                  <%= form_tag profile_path, id: "toggle_2#{i + 1}", remote: true  do -%>
-                  <%= profile_form(model: "Allergy",
-                                   object: allergy,
-                                   name: "#{allergy.name}",
-                                   exist: all_present,
-                                   user_id: current_user,
-                                   off: "don't have",
-                                   on: "have").html_safe %>
-                  <% end -%>
-                </tr>
-                <% end %>
-              </table>
-            </div>
-          </div>
-        </div>
+                  <%#= form_tag profile_path, id: "toggle_2#{i + 1}", remote: true  do -%>
+                  <%#= profile_form(model: "Allergy",
+                   object: allergy,
+                   name: "#{allergy.name}",
+                   exist: all_present,
+                   user_id: current_user,
+                   off: "don't have",
+                   on: "have").html_safe %>
+                   <%# end -%>
+                 </tr>
+                 <%# end %>
+               </table>
+             </div>
+           </div>
+         </div> -->
+        TEST Test test
 
 
 
 
+       </div>
+     </div>
 
-      </div>
-    </div>
-
-  </div> <!-- show user profile -->
-  </div>
+   </div> <!-- show user profile -->
+ </div>
 </div><!-- bootstrap container -->
