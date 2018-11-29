@@ -33,7 +33,6 @@
   </div>
 
 </div>
-
 <%#= link_to "recipes/#{id}" do %>
       <%#= image_tag photo, alt: "Photo of #{recipe_name}", height: "237.5" %>
     <%# end %>
@@ -45,9 +44,7 @@
   <%= hidden_field_tag :wednesday_id, @five_recipes[2].id %>
   <%= hidden_field_tag :thursday_id, @five_recipes[3].id %>
   <%= hidden_field_tag :friday_id, @five_recipes[4].id %>
-  <%= submit_tag "Save Week" %>
+  <%= submit_tag "Save Week", id: "save-week-button" %>
 <% end %>
-
-
 
 

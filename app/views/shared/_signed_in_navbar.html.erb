@@ -3,12 +3,17 @@
   <div class="notice"><%= notice %></div>
   <div class="alert"><%= alert %></div>
 <!-- meal_planner -->
+
+    <%= link_to recipes_path, class: "navbar-rd-item navbar-rd-link" do %>
+        <i class="fas fa-random"></i>
+      <% end %>
+    <!-- profile bitch! -->
     <div class="hidden-xs hidden-sm">
-      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do %>
+      <%= link_to profile_path, class: "navbar-rd-item navbar-rd-link" do %>
         <i class="far fa-calendar-alt"></i>
       <% end %>
       <!-- gocerylist -->
-      <%= link_to "#", class: "navbar-rd-item navbar-rd-link" do%>
+      <%= link_to shopping_list_path, class: "navbar-rd-item navbar-rd-link" do%>
         <i class="fas fa-shopping-basket"></i>
       <% end %>
       <!-- dashboard -->
@@ -27,15 +32,15 @@
       <ul class="dropdown-menu dropdown-menu-right" style="right: 30px;">
 
 
-          <li>
-            <%= link_to "#" do %>
+      <!--     <li>
+            <%#= link_to "#" do %>
               <i class="far fa-calendar-alt"></i>
               <span>My Meal Planner</span>
-            <% end %>
-          </li>
-         <li role="separator" class="divider"></li>
+            <#% end %>
+          </li> -->
+<!--          <li role="separator" class="divider"></li> -->
           <li>
-            <%= link_to root_path do %>
+            <%= link_to profile_path do %>
               <i class="fas fa-star"></i>
               <span>Favorites</span>
             <% end %>
