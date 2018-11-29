@@ -1,10 +1,18 @@
 <div class="container">
-  <h1>This is a shopping list</h1>
-  <ul>
-    <% @ingredients.each do |ingredient| %>
-        <li><%= ingredient.capitalize %></li>
-    <% end %>
-  </ul>
+  <div class="upper-page">
+    <h1 class="title">This is your shopping list:</h1>
+    <div>
+      <a href="mailto:<%= @current_user.email %>"><i class="far fa-envelope btn email-btn"></i></a>
+    </div>
+  </div>
+  <div>
+    <ul class="ingredients-list-container">
+      <% @ingredients.each do |ingredient| %>
+          <li class="ingredient-item"><p><%= ingredient.capitalize %></p></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
 
 

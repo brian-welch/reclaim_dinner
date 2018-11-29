@@ -11,8 +11,16 @@ function recipeLockButtonAction() {
     // var lock_classes = document.querySelector(".index-single-recipe-lock-button").classList;
 
   });
+
+  $("#save-week-button").hide();
+
+  if($(".lock-button-locked").lenght === 5) {
+    console.log("inside length loop")
+
+  };
 };
 
 window.recipeLockButtonAction = recipeLockButtonAction
 
 export { recipeLockButtonAction };
+
