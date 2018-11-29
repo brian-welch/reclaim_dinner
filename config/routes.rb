@@ -18,5 +18,9 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'
   post 'dashboard', to: 'dashboards#update'
 
+  resources 'user_recipes', only: [:index, :create, :update]
+
+  get 'shopping_list', to: 'user_recipes#shopping_list', as: 'shopping_list'
+
 
 end

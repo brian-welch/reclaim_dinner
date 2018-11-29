@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>This is a shopping list</h1>
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+        <li><%= ingredient.capitalize %></li>
+    <% end %>
+  </ul>
+</div>
+
+
