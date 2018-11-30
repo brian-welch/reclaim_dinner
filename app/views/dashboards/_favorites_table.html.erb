@@ -7,7 +7,7 @@
     <% favorites_table.each do |joint| %>
     <tr id="profile-recipe-id-<%= joint.recipe_id %>">
       <td><%= link_to Recipe.find(joint.recipe_id).name, recipe_path(Recipe.find(joint.recipe_id)) %></td>
-      <td><%= joint.created_at %></td>
+      <td><%= joint.created_at.year %>-<%= joint.created_at.month %>-<%= joint.created_at.day %></td>
       <td>
         <%= form_tag user_favorite_path(joint.id), method: :delete, remote: true, confirm: "test" do -%>
         <input type="hidden" name="row_id" value="profile-recipe-id-<%= joint.recipe_id %>">
