@@ -52,7 +52,7 @@
             <ul>
               <% @recipe_ingredients.each do |ingred_obj| %>
               <li>
-                <%= ingred_obj.metric_quantity.to_i %>
+                <%= ingred_obj.metric_quantity.to_f > 10.0 ? ingred_obj.metric_quantity.to_i : ingred_obj.metric_quantity %>
                 <%= MetricMeasure.find(ingred_obj.metric_measure_id).name %>
                 <%= Ingredient.find(ingred_obj.ingredient_id).name %>
 
