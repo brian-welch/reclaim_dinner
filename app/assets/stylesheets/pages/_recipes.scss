@@ -3,23 +3,7 @@
   overflow: hidden;
 }
 
-.index-recipe-shuffle-button {
-  width: 440px;
-  text-align: center;
-  margin-left: calc(50% - 220px);
-  margin-top: -47px;
-  position: absolute;
-  z-index: 600;
-}
 
-.index-recipe-shopping-button {
-  width: 440px;
-  text-align: center;
-  margin-left: calc(50% - 220px);
-  top: 2px;
-  position: absolute;
-  z-index: 600;
-}
 
 
 .index-all-recipe-outer {
@@ -91,6 +75,35 @@
 }
 
 #goToShoppingListButton {
-  display: none;
 }
 
+
+.index-button-box {
+  width: 480px;
+  text-align: center;
+  margin-left: calc(50% - 240px);
+  margin-top: -47px;
+  position: absolute;
+  z-index: 600;
+  display: flex;
+}
+
+
+.index-recipe-shuffle-button, .index-recipe-shopping-button {
+  button {
+    width: 225px;
+  }
+  // text-align: center;
+  // margin-left: calc(50% - 220px);
+  // margin-top: -47px;
+  // position: absolute;
+  // z-index: 600;
+}
+.index-recipe-shopping-button {
+  // width: 440px;
+  // text-align: center;
+  // margin-left: calc(50% - 220px);
+  // top: 2px;
+  // position: absolute;
+  // z-index: 600;
+}
