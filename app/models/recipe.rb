@@ -3,8 +3,8 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :recipe_ingredients
   has_many :user_favorites, dependent: :destroy
   has_many :users, through: :user_favorites
-  has_many :user_recipes
-  has_many :recipe_ratings
+  has_many :user_recipes, dependent: :destroy
+  has_many :recipe_ratings, dependent: :destroy
 
   def list_of_icons
     options =[
