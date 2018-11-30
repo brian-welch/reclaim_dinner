@@ -66,7 +66,7 @@ puts '- ' * 30 + "\n"
 
 puts "\nOpening remote JSON file....."
 # recipe_file = JSON.parse(File.read("db/bulk_gross_recipe_json.json"))
-recipe_file = JSON.parse(open("http://brianwelch.se/media/json_files/recipe_seed_data_v4.json").read)
+recipe_file = JSON.parse(open("http://brianwelch.se/media/json_files/recipe_seed_data_280.json").read)
 recipe_file_array = recipe_file['body']["recipes"]
 
 progress.kill
