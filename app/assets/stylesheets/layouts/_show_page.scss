@@ -54,7 +54,9 @@ font-size: 44px;
   display: flex;
   justify-content: flex-start;
   img {
-    opacity: 0.5;
+    opacity: 0.6;
+    background: linear-gradient(0deg, rgba(0, 125, 130, 0.7)0%, rgba(0, 125, 130,0)100%);
+    border-radius: 50%;
   }
 }
 
