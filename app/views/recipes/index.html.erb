@@ -1,8 +1,21 @@
+<div class="index-button-box">
+  <%= form_tag user_recipes_path do %>
+  <%= hidden_field_tag :monday_id, @five_recipes[0].id %>
+  <%= hidden_field_tag :tuesday_id, @five_recipes[1].id %>
+  <%= hidden_field_tag :wednesday_id, @five_recipes[2].id %>
+  <%= hidden_field_tag :thursday_id, @five_recipes[3].id %>
+  <%= hidden_field_tag :friday_id, @five_recipes[4].id %>
+  <%#= submit_tag "Save Week", id: "save-week-button" %>
+  <div class="index-recipe-shopping-button" id="goToShoppingListButton">
+    <button class="btn rd-button btn-warning" type="submit">Save This Week's Plan</button>
+  </div>
+  <% end %>
   <div class="index-recipe-shuffle-button" id="shuffleListButton">
     <%= link_to shuffle_path, remote: true do -%>
-      <button class="btn rd-button btn-danger">Shuffle Unlocked Recipes!</button>
+    <button class="btn rd-button btn-danger">Shuffle Unlocked Meals</button>
     <% end %>
   </div>
+</div>
 
 <div class="index-recipe-container">
 
@@ -38,21 +51,5 @@
     <%# end %>
 
 <!-- working form below: -->
-<%= form_tag user_recipes_path do %>
-  <%= hidden_field_tag :monday_id, @five_recipes[0].id %>
-  <%= hidden_field_tag :tuesday_id, @five_recipes[1].id %>
-  <%= hidden_field_tag :wednesday_id, @five_recipes[2].id %>
-  <%= hidden_field_tag :thursday_id, @five_recipes[3].id %>
-  <%= hidden_field_tag :friday_id, @five_recipes[4].id %>
-
-
-  <div class="index-recipe-shopping-button" id="goToShoppingListButton">
-      <button class="btn rd-button btn-primary" type="submit">Show Shopping List!</button>
-  </div>
-
-
-  <%#= submit_tag "Save Week", id: "save-week-button" %>
-
-<% end %>
 
 
